@@ -27,10 +27,6 @@ const PILL_STYLE = `
   focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2
 `;
 
-
-
-
-
 // Optional: human labels for known folders. Anything not listed falls back to Title Case.
 const LABEL_OVERRIDES: Record<string, string> = {
   kids: "Enfants",
@@ -75,6 +71,9 @@ const toBase64 = (str: string) =>
 const shimmerDataURL = (w: number, h: number, tone?: string) =>
   `data:image/svg+xml;base64,${toBase64(shimmerSVG(w, h, tone))}`;
 
+// Allow CSS custom property typing for style objects
+type StyleWithVars = React.CSSProperties & { ["--stagger"]?: string };
+
 // Thumbnail card extracted so we can safely use hooks
 function ThumbnailCard({
   p,
@@ -107,10 +106,12 @@ function ThumbnailCard({
     return () => io.disconnect();
   }, []);
 
+  const staggerStyle: StyleWithVars = { ["--stagger"]: `${staggerMs}ms` };
+
   return (
     <figure
       ref={cardRef}
-      style={{ ["--stagger" as any]: `${staggerMs}ms` }}
+      style={staggerStyle}
       className={cn(
         "group relative overflow-hidden rounded-xl bg-white shadow-sm",
         // on-scroll reveal (respect reduced motion)
@@ -137,8 +138,6 @@ function ThumbnailCard({
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             placeholder="blur"
             // If your Photo type doesn't include blurDataURL, this still compiles (we fall back to shimmer)
-            // @ts-ignore - optional field in many setups
-            blurDataURL={p.blurDataURL ?? shimmerDataURL(700, 400)}
             onLoadingComplete={() => setLoaded(true)}
             className={cn(
               "object-cover object-[50%_20%]", // adjust crop focus
@@ -173,7 +172,8 @@ function ThumbnailCard({
 }
 
 export default function GalleryClient({ photos = [] }: { photos?: Photo[] }) {
-  const allPhotos = photos ?? [];
+  // Memoize to keep a stable reference for downstream deps
+  const allPhotos = useMemo(() => photos ?? [], [photos]);
 
   const [filter, setFilter] = useState<FilterKey>("all");
   const [isOpen, setIsOpen] = useState(false);
