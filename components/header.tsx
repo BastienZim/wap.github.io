@@ -1,0 +1,370 @@
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
+
+const links = [
+  { href: "/pratique", label: "Pratique" },
+  { href: "/apropos", label: "À propos" },
+  { href: "/galerie", label: "Galerie" },
+  { href: "/contact", label: "Contact" },
+];
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const sheetRef = useRef<HTMLDivElement>(null);
+
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("theme"); // 'dark' | 'light' | null
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initial = saved ? saved === "dark" : prefersDark;
+      document.documentElement.classList.toggle("dark", initial);
+      setIsDark(initial);
+    } catch {
+      setIsDark(false);
+    }
+  }, []);
+
+  // Mark as mounted (for portal / document access)
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent body scroll when sheet is open
+  useEffect(() => {
+    if (!mounted) return;
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open, mounted]);
+
+  // Add subtle shadow when scrolling
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close on ESC & trap focus when mobile menu is open
+  useEffect(() => {
+    if (!open) return;
+    const firstFocusable = sheetRef.current?.querySelector<HTMLElement>(
+      'a,button,[tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Tab" && sheetRef.current) {
+        const focusables = sheetRef.current.querySelectorAll<HTMLElement>(
+          'a,button,[tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const toggleTheme = () => {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+    setIsDark(next);
+  };
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname?.startsWith(href);
+
+  return (
+    <>
+      {/* Skip link */}
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] rounded-lg bg-brand-600 px-3 py-2 text-white shadow"
+      >
+        Aller au contenu
+      </a>
+
+      <header
+        className={[
+          "sticky top-0 z-50 border-b border-secondary-500/10",
+          "backdrop-blur supports-[backdrop-filter]:backdrop-blur",
+          "bg-gradient-to-b from-secondary-50/95 to-secondary-50/90 dark:from-secondary-950/92 dark:to-secondary-950/88",
+          scrolled
+            ? "shadow-[0_6px_20px_-10px_rgba(0,0,0,0.25)]"
+            : "shadow-none",
+        ].join(" ")}
+        role="banner"
+      >
+        <div className="container flex h-16 items-center justify-between">
+          <Link
+            href="/"
+            className="ml-2 md:ml-0 group inline-flex items-center gap-2"
+            aria-label="Aller à l’accueil"
+          >
+            <span className="relative">
+              <Image
+                src="/logowap.png"
+                alt=""
+                width={36}
+                height={36}
+                className="rounded-md ring-1 ring-brand-500/10 group-hover:ring-brand-500/30 transition"
+                priority
+              />
+            </span>
+            <span className="font-display text-2xl font-bold tracking-wide text-brand-700 dark:text-brand-300">
+              WAP
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1 text-sm">
+            <ul className="flex items-center gap-1">
+              {links.map((l) => {
+                const active = isActive(l.href);
+                const keyLink = l.href === "/pratique";
+                return (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      aria-current={active ? "page" : undefined}
+                      className={[
+                        "relative inline-flex items-center rounded-full px-3.5 py-2 transition",
+                        "motion-safe:duration-200",
+                        "text-foreground/85 hover:text-foreground",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2",
+                        active
+                          ? "text-brand-900 dark:text-brand-50"
+                          : keyLink
+                          ? "text-brand-700 dark:text-brand-300"
+                          : "",
+                      ].join(" ")}
+                    >
+                      <span
+                        className={[
+                          "absolute inset-0 -z-10 rounded-full",
+                          "opacity-0 scale-95",
+                          "motion-safe:transition-all motion-safe:duration-300",
+                          active
+                            ? "opacity-100 scale-100 bg-brand-500/15 ring-1 ring-brand-500/20"
+                            : "group-hover:opacity-100 group-hover:scale-100",
+                        ].join(" ")}
+                        aria-hidden="true"
+                      />
+                      <span className="relative">
+                        {l.label}
+                        <span
+                          className={[
+                            "absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0",
+                            "motion-safe:transition-transform motion-safe:duration-300",
+                            active
+                              ? "scale-x-100 bg-brand-600/70 dark:bg-brand-400/80"
+                              : "group-hover:scale-x-100 bg-brand-500/60",
+                          ].join(" ")}
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <Link
+              href="/join"
+              className={[
+                "ml-2 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-white shadow-smooth",
+                "bg-gradient-to-b from-brand-600 to-brand-700 hover:from-brand-600/95 hover:to-brand-700/95",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2",
+              ].join(" ")}
+            >
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-white/70" />
+              Join
+            </Link>
+
+            {/* Theme toggle (desktop) */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Basculer le thème"
+              aria-pressed={isDark ?? false}
+              title="Toggle theme"
+              className={[
+                "ml-2 inline-flex h-9 w-9 items-center justify-center rounded-lg",
+                "border border-brand-500/20",
+                "bg-brand-500/[.06] dark:bg-brand-500/[.08]",
+                "hover:bg-brand-500/[.12] dark:hover:bg-brand-500/[.14]",
+                "transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2",
+              ].join(" ")}
+            >
+              {isDark === null ? null : isDark ? (
+                <Moon className="h-5 w-5 text-brand-300" />
+              ) : (
+                <Sun className="h-5 w-5 text-brand-700" />
+              )}
+            </button>
+          </nav>
+
+          {/* Mobile: theme + menu button */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Basculer le thème"
+              aria-pressed={isDark ?? false}
+              title="Toggle theme"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/[.06] dark:bg-brand-500/[.08] hover:bg-brand-500/[.12] dark:hover:bg-brand-500/[.14] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+            >
+              {isDark === null ? null : isDark ? (
+                <Moon className="h-5 w-5 text-brand-300" />
+              ) : (
+                <Sun className="h-5 w-5 text-brand-700" />
+              )}
+            </button>
+
+            <button
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/[.06] hover:bg-brand-500/[.12] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+              onClick={() => setOpen(true)}
+              aria-label="Ouvrir le menu"
+              aria-haspopup="dialog"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+            >
+              <Menu className="text-brand-700 dark:text-brand-300" />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile sheet via portal, with backdrop only under the sheet */}
+        {mounted && open &&
+          createPortal(
+            <div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              className="md:hidden fixed inset-0 z-[100]"
+            >
+              {/* Fullscreen transparent click layer so tapping anywhere outside closes */}
+              <button
+                type="button"
+                aria-label="Fermer le menu"
+                className="absolute inset-0 bg-transparent"
+                onClick={() => setOpen(false)}
+              />
+
+              {/* Right side region = sheet area */}
+              <div className="absolute inset-y-0 right-0 w-[86%] max-w-sm">
+                {/* Visual backdrop confined to sheet area (opaque) */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-black dark:bg-black"
+                />
+
+                {/* Sheet panel (on top of its own backdrop) */}
+                <div
+                  ref={sheetRef}
+                  className={[
+                    "relative h-full",
+                    "bg-background ",
+                    "border-l border-brand-500/20 shadow-2xl",
+                    "animate-in slide-in-from-right duration-200",
+                  ].join(" ")}
+                >
+                  <div className="flex items-center justify-between p-4">
+                    <div className="inline-flex items-center gap-2">
+                      <Image
+                        src="/logowap.png"
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="rounded-md ring-1 ring-brand-500/20"
+                        priority
+                      />
+                      <span className="font-display text-lg font-semibold text-brand-700 dark:text-brand-200">
+                        Menu
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/[.06] hover:bg-brand-500/[.12] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                      aria-label="Fermer"
+                    >
+                      <X className="text-brand-700 dark:text-brand-300" />
+                    </button>
+                  </div>
+
+                  <nav className="px-4 pb-6">
+                    <ul className="grid gap-1.5">
+                      {links.map((l) => {
+                        const active = isActive(l.href);
+                        const keyLink = l.href === "/pratique";
+                        return (
+                          <li key={l.href}>
+                            <Link
+                              href={l.href}
+                              onClick={() => setOpen(false)}
+                              aria-current={active ? "page" : undefined}
+                              className={[
+                                "block rounded-xl px-4 py-3 transition",
+                                "text-base",
+                                active
+                                  ? "bg-brand-500/15 ring-1 ring-brand-500/20 text-brand-900 dark:text-brand-50"
+                                  : keyLink
+                                  ? "text-brand-700 dark:text-brand-300"
+                                  : "text-foreground/85 hover:bg-brand-500/10",
+                              ].join(" ")}
+                            >
+                              {l.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+
+                      <li className="mt-1.5">
+                        <Link
+                          href="/join"
+                          onClick={() => setOpen(false)}
+                          className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-b from-brand-600 to-brand-700 px-4 py-3 text-white shadow-sm hover:from-brand-600/95 hover:to-brand-700/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2"
+                        >
+                          Join
+                        </Link>
+                      </li>
+
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>,
+            document.body
+          )}
+      </header>
+
+      {/* Anchor target for the skip link */}
+      <div id="content" className="sr-only" />
+    </>
+  );
+}

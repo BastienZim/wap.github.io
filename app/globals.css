@@ -1,0 +1,76 @@
+/* ===== Brand + system tokens (Tailwind v4) ===== */
+
+/* 1) Load Tailwind first so our tokens win over defaults */
+@import "tailwindcss";
+
+/* 2) Define tokens */
+@theme {
+  /* UI surfaces (space-separated RGB = supports /opacity utilities) */
+  --color-background: 255 255 255;
+  --color-foreground: 17 24 39;
+
+  /* BRAND — #F3A54B scale */
+  --color-brand: #F3A54B;
+  --color-brand-50:  color-mix(in oklab, var(--color-brand) 10%, white);
+  --color-brand-100: color-mix(in oklab, var(--color-brand) 20%, white);
+  --color-brand-200: color-mix(in oklab, var(--color-brand) 30%, white);
+  --color-brand-300: color-mix(in oklab, var(--color-brand) 40%, white);
+  --color-brand-500: #F3A54B;
+  --color-brand-400: color-mix(in oklab, var(--color-brand) 60%, white);
+  --color-brand-600: color-mix(in oklab, var(--color-brand) 90%, black);
+  --color-brand-700: color-mix(in oklab, var(--color-brand) 80%, black);
+  --color-brand-800: color-mix(in oklab, var(--color-brand) 70%, black);
+  --color-brand-900: color-mix(in oklab, var(--color-brand) 60%, black);
+  --color-brand-950: color-mix(in oklab, var(--color-brand) 50%, black);
+
+  /* SECONDARY — #858E99 scale (optional) */
+  --color-secondary-50:  #FAF0E7;
+  --color-secondary-100: #F2E8DF;
+  --color-secondary-200: #E8DED4;
+  --color-secondary-300: #D9CFC6; /* good replacement for #B2B2B2 in borders/backgrounds */
+  --color-secondary-400: #ADA49B; /* slightly stronger */
+  --color-secondary-500: #827971;
+  --color-secondary-600: #645C54;
+  --color-secondary-700: #544C44; /* readable on white (AA+) */
+  --color-secondary-800: #3B342C;
+  --color-secondary-900: #2D261F;
+
+/* INDIGO — base #4F46E5 (Tailwind’s indigo-600) */
+  --color-tertiary: #4F46E5;
+  --color-tertiary-50:  color-mix(in oklab, var(--color-tertiary) 10%, white);
+  --color-tertiary-100: color-mix(in oklab, var(--color-tertiary) 20%, white);
+  --color-tertiary-200: color-mix(in oklab, var(--color-tertiary) 30%, white);
+  --color-tertiary-300: color-mix(in oklab, var(--color-tertiary) 40%, white);
+  --color-tertiary-400: color-mix(in oklab, var(--color-tertiary) 55%, white);
+  --color-tertiary-500: color-mix(in oklab, var(--color-tertiary) 70%, white);
+  --color-tertiary-600: #4F46E5;
+  --color-tertiary-700: color-mix(in oklab, var(--color-tertiary) 85%, black);
+  --color-tertiary-800: color-mix(in oklab, var(--color-tertiary) 70%, black);
+  --color-tertiary-900: color-mix(in oklab, var(--color-tertiary) 60%, black);
+  --color-tertiary-950: color-mix(in oklab, var(--color-tertiary) 50%, black);
+
+
+  --pill-hover-bg: color-mix(in oklab, var(--color-brand) 12%, white);
+  --pill-selected-bg: var(--color-transparent);
+
+  /* optional dark tuning */
+  --pill-hover-bg-dark: color-mix(in oklab, var(--color-brand) 18%, black);
+
+  /* handy alias if you use “accent” elsewhere */
+  --color-accent: var(--color-brand-500);
+  --color-accent-foreground: 0 0 0;
+}
+
+/* 3) Dark mode overrides (class strategy) */
+.dark {
+  --color-background: 15 23 42;   /* ~slate-900 */
+  --color-foreground: 241 245 249;/* ~slate-100 */
+}
+
+/* 4) Base page colors (nice defaults even without utilities) */
+:root { color-scheme: light dark; }
+html, body { height: 100%; }
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}

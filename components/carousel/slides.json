@@ -1,0 +1,26 @@
+[
+  {
+    "id": "wado-ryu",
+    "title": "W A D O  R Y U",
+    "text": "Le Wado Ryu Karate Jujutsu Kempo est le fruit d’une lente et géniale élaboration réalisée par Hironori Otsuka sensei (1892-1982). Lorsqu'il débute l’étude du karaté dans les années 1920, il entrevoit sans doute déjà l’adaptation et la fusion des nouvelles techniques qu’il découvre alors avec le budo traditionnel qu’il pratique depuis l’enfance.",
+    "href": "#carousel_d922",
+    "imgSrc": "OtsukaCalifornia_.jpg",
+    "imgAlt": "Wado Ryu visuel"
+  },
+  {
+    "id": "wado-academy",
+    "title": "W A D O  A C A D E M Y",
+    "text": "Dans les années 1960, le Wado Ryu se diffuse à l’étranger par la médiation de plusieurs maîtres, tels que Arakawa sensei (en Amérique du Nord), Kono et Suzuki sensei (en Europe). Un jeune Japonais d’une trentaine d’années rejoint rapidement ce dernier en Angleterre, il s’agit de Masafumi Shiomitsu.",
+    "href": "#carousel_5e77",
+    "imgSrc": "shiomitsu_demo_smile.jpg",
+    "imgAlt": "Wado Academy visuel"
+  },
+  {
+    "id": "wado-paris",
+    "title": "W A D O  P A R I S",
+    "text": "Il existe plusieurs clubs Wado Academy en région parisienne, à commencer par le dojo Mei Wa Kan, fondé et dirigé par Tran Hieu sensei… Tran sensei est en outre notre directeur technique national.",
+    "href": "#carousel_2f54",
+    "imgSrc": "wap_fin_saison_24_25.jpg",
+    "imgAlt": "Wado Paris visuel"
+  }
+]
