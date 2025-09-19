@@ -1,0 +1,42 @@
+{
+  "sectionId": "carousel_2f54",
+  "gradient": "bg-gradient-to-r from-emerald-200/45 via-teal-200/45 to-cyan-200/45",
+  "cards": [
+    {
+      "title": "Stage inaugural",
+      "text": "Le dojo Wado Academy Paris est fondé en 2018, à l’occasion de la première tenue du stage international assuré conjointement par Tran sensei et Tyrone Pardue sensei, représentant de Shiomitsu aux Etats-Unis. C’est une nouvelle page qui s’ouvre alors, toujours dans le même esprit de transmission et d’exigence.",
+      "image": {
+        "src": "/images/stages/PhotostageWadoParis2018.jpg",
+        "alt": "Stage inaugural - Wado Academy Paris",
+        "position": "before",
+        "align": "start",
+        "width": 144,
+        "height": 144
+      }
+    },
+    {
+      "title": "L'équipe WAP",
+      "text": "L’enseignant de la Wado Academy Paris (WAP) est Benoît Mauchamp, titulaire du BEES, 5ème dan FFK et 3ème dan Wado Academy. Il est accompagné dans cette mission par Mayumi Sumida et Rémy Boulogne, et à eux trois ils s’affairent pour proposer quatre fois par semaine dans le centre de Paris un Wado Ryu digne de ce nom.",
+      "image": {
+        "src": "/images/WAP/photogroupeWAP.jpg",
+        "alt": "L'équipe WAP",
+        "position": "after",
+        "align": "end",
+        "width": 144,
+        "height": 144
+      }
+    },
+    {
+      "title": "Au-delà du dojo",
+      "text": "WAP est une jeune organisation dont la pratique et l’esprit traversent l’enceinte du dojo pour mener un travail de réflexion avec les jeunes (projet Karat-Ethik), se ressourcer en pleine nature (retraite au domaine du Taillé), et collaborer au-delà des frontières pour la diffusion d’un karaté solidaire (projet EMWA-Madagascar).",
+      "image": {
+        "src": "images/facebook/benoit_demo_mada.jpg",
+        "alt": "Pratique WAP au-delà du dojo",
+        "position": "before",
+        "align": "start",
+        "width": 144,
+        "height": 144
+      }
+    }
+  ]
+}

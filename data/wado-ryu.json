@@ -1,0 +1,25 @@
+{
+  "cards": [
+    {
+      "image": "images/directly_useful/KanjiWAgris1.png",
+      "alt": "Wa / Harmonie",
+      "titleBold": "Wa",
+      "titleRest": "/ Harmonie",
+      "text": "Le Wado Ryu est une synthèse harmonieuse du karaté d’Okinawa et d’une ancienne école budo (Shindo Yoshin Ryu). Il est élaboré au début des années 1930 par Hironori Otsuka sensei."
+    },
+    {
+      "image": "images/directly_useful/KanjiDOgris.png",
+      "alt": "Do / Voie",
+      "titleBold": "Do",
+      "titleRest": "/ Voie",
+      "text": "La pratique repose sur des principes naturels qui respectent l’intégrité physique et assurent l’efficacité. Cette recherche constante permet d’éviter tout usage de force ou de mouvement superflu."
+    },
+    {
+      "image": "images/directly_useful/KanjiRYUgris.png",
+      "alt": "Ryu / Style",
+      "titleBold": "Ryu",
+      "titleRest": "/ Style",
+      "text": "Le style associe des techniques de percussion pieds-poings (karaté), des esquives fluides et millimétrées du corps (kenjutsu), mais aussi des clés, déséquilibres, projections et amenées au sol (jujutsu)."
+    }
+  ]
+}

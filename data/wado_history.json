@@ -1,0 +1,42 @@
+{
+  "sectionId": "carousel_d922",
+  "gradient": "bg-gradient-to-r from-emerald-200/45 via-teal-200/45 to-cyan-200/45",
+  "cards": [
+    {
+      "title": "L'Origine",
+      "text": "Versé dans l’étude du Shindo Yoshin Ryu, un art martial ancien combinant plusieurs écoles de iaï-jutsu, kenjutsu et jujutsu, Otsuka s’entraîne auprès de Gichin Funakoshi de 1922 à 1935. Parallèlement, il éprouve le besoin d’approfondir son étude du karaté auprès des maîtres Choki Motobu et Kenwa Mabuni (fondateur du Shito Ryu).",
+      "image": {
+        "src": "images/directly_useful/OtsukaIIkakete.jpg",
+        "alt": "L'Origine - Wado Ryu",
+        "position": "before",
+        "align": "start",
+        "width": 144,
+        "height": 144
+      }
+    },
+    {
+      "title": "L'Evolution",
+      "text": "Même si le terme « Wado ryu » n’apparaît officiellement qu’un peu plus tard, Otsuka commence à enseigner cet art en 1934. Il présente d’importantes nuances vis-à-vis du karaté d’Okinawa, qui continuent à être affinées au fil du temps. Car la particularité du Wado, mixte par nature, est de pouvoir évoluer sans perdre de vue ses origines.",
+      "image": {
+        "src": "images/directly_useful/Otsuka-Jiro-novembre1959.jpg",
+        "alt": "L'Evolution - Wado Ryu",
+        "position": "after",
+        "align": "end",
+        "width": 144,
+        "height": 144
+      }
+    },
+    {
+      "title": "La Continuité",
+      "text": "Au début des années 1980, Otsuka sensei rompt avec la Wado Kaï, l’organisation dont il est à l’origine. Quelques mois avant son décès, il crée la Wado Ryu Renmei en 1981 et en confie la direction à son fils, Jiro Otsuka sensei (1934-2015). Lui incombe dès lors la mission de préserver et transmettre le Wado Ryu tel que pensé par son père.",
+      "image": {
+        "src": "images/directly_useful/21729048_336631460140057_2718598406607468574_o.jpg",
+        "alt": "La Continuité - Wado Ryu",
+        "position": "before",
+        "align": "start",
+        "width": 144,
+        "height": 144
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+/* 1) Load Tailwind first so our tokens win over defaults */
+@import "tailwindcss";
+
+/* 2) Define tokens */
+@theme {
+  /* UI surfaces (space-separated RGB = supports /opacity utilities) */
+  --color-background: 254 253 255; /* white */
+  --color-foreground: 40 30 20;
+
+  /* handy if you reference it */
+  --color-transparent: transparent;
+
+  /* BRAND — store as RGB so /opacity works */
+  --color-brand: 243 165 75; /* #F3A54B */
+
+  /* Use srgb for widest support, and wrap RGB vars with rgb() */
+  --color-brand-50:  color-mix(in srgb, rgb(var(--color-brand)) 5%,  white);
+  --color-brand-100: color-mix(in srgb, rgb(var(--color-brand)) 10%, white);
+  --color-brand-200: color-mix(in srgb, rgb(var(--color-brand)) 20%, white);
+  --color-brand-300: color-mix(in srgb, rgb(var(--color-brand)) 30%, white);
+  --color-brand-400: color-mix(in srgb, rgb(var(--color-brand)) 40%, white);
+  --color-brand-500: rgb(var(--color-brand)); /* exact brand */
+  --color-brand-600: color-mix(in srgb, rgb(var(--color-brand)) 90%, black);
+  --color-brand-700: color-mix(in srgb, rgb(var(--color-brand)) 80%, black);
+  --color-brand-800: color-mix(in srgb, rgb(var(--color-brand)) 70%, black);
+  --color-brand-900: color-mix(in srgb, rgb(var(--color-brand)) 60%, black);
+  --color-brand-950: color-mix(in srgb, rgb(var(--color-brand)) 50%, black);
+
+  /* POWDER BLUE */
+  --color-primary: 142 177 199;
+  --color-primary-50:  color-mix(in srgb, rgb(var(--color-primary)) 10%, white);
+  --color-primary-100: color-mix(in srgb, rgb(var(--color-primary)) 20%, white);
+  --color-primary-200: color-mix(in srgb, rgb(var(--color-primary)) 30%, white);
+  --color-primary-300: color-mix(in srgb, rgb(var(--color-primary)) 40%, white);
+  --color-primary-400: color-mix(in srgb, rgb(var(--color-primary)) 60%, white);
+  --color-primary-500: rgb(var(--color-primary));
+  --color-primary-600: color-mix(in srgb, rgb(var(--color-primary)) 90%, black);
+  --color-primary-700: color-mix(in srgb, rgb(var(--color-primary)) 80%, black);
+  --color-primary-800: color-mix(in srgb, rgb(var(--color-primary)) 70%, black);
+  --color-primary-900: color-mix(in srgb, rgb(var(--color-primary)) 60%, black);
+
+  /* COFFEE */
+  --color-secondary: 105 74 56;
+  --color-secondary-50:  color-mix(in srgb, rgb(var(--color-secondary)) 10%, white);
+  --color-secondary-100: color-mix(in srgb, rgb(var(--color-secondary)) 20%, white);
+  --color-secondary-200: color-mix(in srgb, rgb(var(--color-secondary)) 30%, white);
+  --color-secondary-300: color-mix(in srgb, rgb(var(--color-secondary)) 40%, white);
+  --color-secondary-400: color-mix(in srgb, rgb(var(--color-secondary)) 60%, white);
+  --color-secondary-500: rgb(var(--color-secondary));
+  --color-secondary-600: color-mix(in srgb, rgb(var(--color-secondary)) 90%, black);
+  --color-secondary-700: color-mix(in srgb, rgb(var(--color-secondary)) 80%, black);
+  --color-secondary-800: color-mix(in srgb, rgb(var(--color-secondary)) 70%, black);
+  --color-secondary-900: color-mix(in srgb, rgb(var(--color-secondary)) 60%, black);
+
+  /* SUCCESS */
+  --color-success: 158 228 147;
+  --color-success-50:  color-mix(in srgb, rgb(var(--color-success)) 10%, white);
+  --color-success-100: color-mix(in srgb, rgb(var(--color-success)) 20%, white);
+  --color-success-200: color-mix(in srgb, rgb(var(--color-success)) 30%, white);
+  --color-success-300: color-mix(in srgb, rgb(var(--color-success)) 40%, white);
+  --color-success-400: color-mix(in srgb, rgb(var(--color-success)) 60%, white);
+  --color-success-500: rgb(var(--color-success));
+  --color-success-600: color-mix(in srgb, rgb(var(--color-success)) 90%, black);
+  --color-success-700: color-mix(in srgb, rgb(var(--color-success)) 80%, black);
+  --color-success-800: color-mix(in srgb, rgb(var(--color-success)) 70%, black);
+  --color-success-900: color-mix(in srgb, rgb(var(--color-success)) 60%, black);
+
+  /* White */
+  --color-white: 254 253 255;
+
+  --pill-hover-bg: color-mix(in srgb, rgb(var(--color-brand)) 12%, white);
+  --pill-selected-bg: var(--color-transparent);
+
+  /* handy alias if you use “accent” elsewhere */
+  --color-accent: var(--color-brand-500);
+  --color-accent-foreground: 0 0 0;
+}
+
+/* 3) Dark mode overrides (class strategy) */
+.dark {
+  --color-background: 105 74 56;   /* coffee */
+  --color-foreground: 254 253 255; /* white */
+}
+
+/* 4) Base page colors */
+:root { color-scheme: light dark; }
+html, body { height: 100%; }
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+html { scroll-behavior: smooth; }

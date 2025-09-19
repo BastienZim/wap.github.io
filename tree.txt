@@ -1,0 +1,130 @@
+./
+├── app
+│   ├── apropos
+│   │   └── page.tsx
+│   ├── a-propos.tsx
+│   ├── contact
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── galerie
+│   │   ├── GalleryClient.tsx
+│   │   ├── page.tsx
+│   │   └── types.ts
+│   ├── global-error.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── not-found.tsx
+│   ├── page.tsx
+│   └── pratique
+│       └── page.tsx
+├── components
+│   ├── carousel
+│   │   ├── carousel.tsx
+│   │   ├── slides.json
+│   │   └── types.ts
+│   ├── cta-banner.tsx
+│   ├── footer.tsx
+│   ├── header.tsx
+│   ├── hero.tsx
+│   ├── LieuxHoraires.tsx
+│   ├── schedule.tsx
+│   ├── tarifs.tsx
+│   ├── ui
+│   │   ├── Button.tsx
+│   │   └── Lightbox.tsx
+│   └── WadoRyu.tsx
+├── data
+│   └── schedule.ts
+├── eslint.config.mjs
+├── next.config.ts
+├── next-env.d.ts
+├── out
+│   ├── 404
+│   │   └── index.html
+│   ├── 404.html
+│   ├── apropos
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── base-59df304b0407d.png
+│   ├── contact
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── favicon.ico
+│   ├── FFKlogogris.png
+│   ├── file.svg
+│   ├── galerie
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── globe.svg
+│   ├── images
+│   │   ├── facebook
+│   │   ├── Posters
+│   │   ├── Projets
+│   │   ├── Sensei
+│   │   ├── stages
+│   │   └── WAP
+│   ├── index.html
+│   ├── index.txt
+│   ├── KanjiDOgris.png
+│   ├── KanjiRYUgris.png
+│   ├── KanjiWAgris1.png
+│   ├── logowapgris.png
+│   ├── logowap.png
+│   ├── logoWAretouchegris.png
+│   ├── _next
+│   │   ├── lTI5sX9-9TqZQOBxy3Emx
+│   │   └── static
+│   ├── next.svg
+│   ├── OtsukaCalifornia_.jpg
+│   ├── OtsukaetJirodemo-2.jpg
+│   ├── pictonotredame3.png
+│   ├── pictoprojectiongris.png
+│   ├── pictosacrecoeur2.png
+│   ├── pictotoureiffel2.png
+│   ├── pratique
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── robots.txt.tmp
+│   ├── shiomitsu_demo_smile.jpg
+│   ├── vercel.svg
+│   ├── wap_fin_saison_24_25.jpg
+│   └── window.svg
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── public
+│   ├── base-59df304b0407d.png
+│   ├── FFKlogogris.png
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── images
+│   │   ├── facebook
+│   │   ├── Posters
+│   │   ├── Projets
+│   │   ├── Sensei
+│   │   ├── stages
+│   │   └── WAP
+│   ├── KanjiDOgris.png
+│   ├── KanjiRYUgris.png
+│   ├── KanjiWAgris1.png
+│   ├── logowapgris.png
+│   ├── logowap.png
+│   ├── logoWAretouchegris.png
+│   ├── next.svg
+│   ├── OtsukaCalifornia_.jpg
+│   ├── OtsukaetJirodemo-2.jpg
+│   ├── pictonotredame3.png
+│   ├── pictoprojectiongris.png
+│   ├── pictosacrecoeur2.png
+│   ├── pictotoureiffel2.png
+│   ├── robots.txt.tmp
+│   ├── shiomitsu_demo_smile.jpg
+│   ├── vercel.svg
+│   ├── wap_fin_saison_24_25.jpg
+│   └── window.svg
+├── README.md
+├── tailwind.config.ts
+├── tree.txt
+└── tsconfig.json
+
+741 directories, 1902 files
