@@ -21,7 +21,6 @@ export default function Header() {
     const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === "/";
-    const isPratique = pathname === "/pratique";
     const sheetRef = useRef<HTMLDivElement>(null);
 
     // Initialize theme from localStorage or system preference
@@ -116,13 +115,8 @@ export default function Header() {
                 className={[
                     "sticky top-0 z-50 border-b border-secondary-200 dark:border-secondary-700",
                     "backdrop-blur supports-[backdrop-filter]:backdrop-blur",
-                    // base text color
-                    isPratique
-                        ? "text-neutral-900 dark:text-white"
-                        : "text-white",
-                    // background (keep transparent or your existing logic)
+                    "text-primary dark:text-primary",
                     "bg-transparent",
-                    // ...any existing dynamic classes (e.g. shadow when scrolled)...
                 ].join(" ")}
                 role="banner"
             >
@@ -130,7 +124,7 @@ export default function Header() {
                     <Link
                         href="/"
                         className="ml-2 md:ml-0 group inline-flex items-center gap-2"
-                        aria-label="Aller à l’accueil"
+                        aria-label="Aller à l'accueil"
                     >
                         <span className="relative">
                             <BaseImage
@@ -141,7 +135,7 @@ export default function Header() {
                                 className="rounded-md ring-1 ring-brand-500/10 group-hover:ring-brand-500/30 transition"
                             />
                         </span>
-                        <span className="font-display text-2xl font-bold tracking-wide text-brand-700 dark:text-brand-300">
+                        <span className="font-display text-2xl font-bold tracking-wide text-brand-700 dark:text-brand-500">
                             WAP
                         </span>
                     </Link>
@@ -154,21 +148,21 @@ export default function Header() {
                                 return (
                                     <li key={l.href}>
                                         <Link
-											href={l.href}
+                                            href={l.href}
                                             aria-current={active ? "page" : undefined}
                                             className={
                                                 `relative inline-flex items-center rounded-full px-3.5 py-2 transition motion-safe:duration-200
                                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2
                                                 ${active
-                                                    ? "bg-brand-500/15 ring-1 ring-brand-500/20 text-brand-900 dark:text-brand-50"
-                                                    : "text-brand-600 dark:text-brand-300 hover:bg-primary-100/60 dark:hover:bg-secondary-700/60 hover:text-brand-700 dark:hover:text-brand-200 font-medium"}`
-													
+                                                    ? "bg-brand-500/20 ring-1 ring-brand-500/30 text-secondary-900 dark:text-secondary-500 font-semibold"
+                                                    : "text-brand-600 dark:text-brand-500 hover:bg-primary-100/60 dark:hover:bg-secondary-700/60 hover:text-primary-700 dark:hover:text-primary-200 font-medium"}`
+                                                    
                                             }
                                         >
                                             <span className={
                                                 `absolute inset-0 -z-10 rounded-full opacity-0 scale-95 motion-safe:transition-all motion-safe:duration-300
                                                 ${active
-                                                    ? "opacity-100 scale-100 bg-brand-500/15 ring-1 ring-brand-500/20"
+                                                    ? "opacity-100 scale-100 bg-brand-500/20 ring-1 ring-brand-500/30"
                                                     : "group-hover:opacity-100 group-hover:scale-100"}`
                                             }
                                                 aria-hidden="true"
@@ -179,7 +173,7 @@ export default function Header() {
                                                     className={
                                                         `absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 motion-safe:transition-transform motion-safe:duration-300
                                                         ${active
-                                                            ? "scale-x-100 bg-success-500/70 dark:bg-success-400/80"
+                                                            ? "scale-x-100 bg-secondary-700/80 dark:bg-primary-300/80"
                                                             : "group-hover:scale-x-100 bg-brand-500/60"}`
                                                     }
                                                     aria-hidden="true"
@@ -312,8 +306,8 @@ export default function Header() {
                                                             className={
                                                                 `block rounded-xl px-4 py-3 transition text-base
                                                                 ${active
-                                                                    ? "bg-brand-500/15 ring-1 ring-brand-500/20 text-brand-900 dark:text-brand-50"
-                                                                    : "text-brand-600 dark:text-brand-300 hover:bg-primary-100/60 dark:hover:bg-secondary-700/60 hover:text-brand-700 dark:hover:text-brand-200 font-medium"}`
+                                                                    ? "bg-brand-500/20 ring-1 ring-brand-500/30 text-secondary-900 dark:text-primary-200 font-semibold"
+                                                                    : "text-brand-600 dark:text-brand-300 hover:bg-primary-100/60 dark:hover:bg-secondary-700/60 hover:text-primary-700 dark:hover:text-primary-200 font-medium"}`
                                                             }
                                                         >
                                                             {l.label}

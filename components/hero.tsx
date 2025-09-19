@@ -48,9 +48,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-display text-4xl md:text-6xl leading-tight drop-shadow-lg"
+          className="font-display text-4xl md:text-6xl leading-tight drop-shadow-lg text-brand-500"
         >
-          Wado Academy <span className="text-brand-400">Paris</span>
+          Wado Academy <span className="text-primary-500">Paris</span>
         </motion.h1>
 
         {/* Subtext */}
