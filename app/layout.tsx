@@ -37,6 +37,7 @@ export default function RootLayout({
           antialiased
           min-h-screen
           flex flex-col
+          transition-colors duration-300
         "
         style={{
           backgroundColor: 'rgb(var(--color-background))',

@@ -13,6 +13,7 @@ const links = [
     { href: "/galerie", label: "Galerie" },
     { href: "/new_images_section", label: "new_images_section" },
     { href: "/contact", label: "Contact" },
+    { href: "/wado-karate-info", label: "Wikipedia"},
 ];
 
 export default function Header() {

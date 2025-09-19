@@ -80,6 +80,21 @@
 .dark {
   --color-background: 105 74 56;   /* coffee */
   --color-foreground: 254 253 255; /* white */
+  
+  /* Since we've inverted text colors in the components:
+     - primary colors need to be darker in dark mode (reverse of the original)
+     - secondary colors need to remain dark for contrast on dark background */
+  --color-primary-100: color-mix(in srgb, black 25%, rgb(var(--color-primary)));
+  --color-primary-200: color-mix(in srgb, black 35%, rgb(var(--color-primary)));
+  --color-primary-300: color-mix(in srgb, black 45%, rgb(var(--color-primary)));
+  
+  --color-brand-300: color-mix(in srgb, black 25%, rgb(var(--color-brand)));
+  --color-brand-700: color-mix(in srgb, white 25%, rgb(var(--color-brand)));
+  
+  /* Keep secondary colors dark for proper contrast on dark background */
+  --color-secondary-700: rgb(var(--color-secondary));
+  --color-secondary-800: color-mix(in srgb, black 10%, rgb(var(--color-secondary)));
+  --color-secondary-900: color-mix(in srgb, black 20%, rgb(var(--color-secondary)));
 }
 
 /* 4) Base page colors */

@@ -54,7 +54,7 @@ export default function Schedule() {
                       href={item.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brand-500 hover:text-secondary-600 transition-colors font-medium no-underline"
+                      className="text-brand-600 hover:text-brand-700 transition-colors font-medium no-underline"
                     >
                       {item.venue}
                     </a>

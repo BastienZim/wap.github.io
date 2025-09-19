@@ -98,7 +98,7 @@ export default function LieuxHorairesAligned() {
 									<Link
 										href={item.mapUrl}
 										target="_blank"
-										className="text-tertiary-700 hover:underline font-medium"
+										className="text-brand-600 hover:text-brand-700 transition-colors font-medium"
 									>
 										{item.venue}
 									</Link>

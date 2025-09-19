@@ -7,7 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "preview:pages": "rimraf .next out && next build && node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && npx serve out"
+    "export": "rimraf .next out && next build && next export",
+    "preview:pages": "rimraf .next out && next build && node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && npx serve out",
+    "deploy:gh-pages": "rimraf .next out && next build && next export && touch out/.nojekyll && echo 'Deployment complete. Commit and push the /out folder (or configure a gh-pages action).'"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.7",

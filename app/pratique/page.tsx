@@ -1,10 +1,12 @@
 // app/pratique/page.tsx
 import Link from "next/link";
 import BaseImage from "@/components/ui/BaseImage";
+import Tarifs from "@/components/tarifs";
 import { schedule } from "@/data/schedule";
 import { gearList } from "@/data/gear";
 import { faqList } from "@/data/faq";
 import { levels } from "@/data/levels";
+
 
 export const metadata = {
   title: "Pratique – Wado Academy Paris",
@@ -29,7 +31,7 @@ export default function PratiquePage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl mb-14 min-h-[400px] md:min-h-[520px] lg:min-h-[600px] flex items-center z-10 ring-1 ring-primary-200 dark:ring-secondary-700 bg-secondary-900/70">
+      <section className="relative overflow-hidden rounded-3xl mb-14 min-h-[400px] md:min-h-[520px] lg:min-h-[600px] flex items-center z-10 ring-1 ring-primary-200 dark:ring-secondary-700 bg-secondary-900/60 dark:bg-secondary-900/70">
         <div className="absolute inset-0">
           <BaseImage
             src="/images/directly_useful/OtsukaCalifornia_.jpg"
@@ -40,15 +42,16 @@ export default function PratiquePage() {
             className="h-full w-full object-cover object-top brightness-90"
           />
           {/* Brand‑tinted overlay for consistency */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-700/70 via-brand-600/50 to-brand-500/25 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/60 via-secondary-900/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-700/70 via-brand-600/50 to-brand-500/25 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/60 via-secondary-900/30 to-transparent" />
         </div>
         <div className="relative z-10 px-6 md:px-14 py-16 md:py-28 text-white max-w-3xl">
           <h1 className="font-display text-4xl md:text-6xl leading-tight drop-shadow-sm text-brand-50">
             Pratique
           </h1>
           <p className="mt-5 max-w-2xl text-brand-50/90">
-            Tout ce qu’il faut pour venir s’entraîner : lieux, horaires, tenue et conseils.
+            Tout ce qu’il faut pour venir s’entraîner : lieux, horaires, tenue
+            et conseils.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -69,14 +72,18 @@ export default function PratiquePage() {
 
       {/* Lieux & horaires */}
       <section id="lieux-horaires" className="mb-14">
-        <h2 className="text-3xl font-bold tracking-tight text-brand-700 dark:text-brand-300">
+        <h2 className="text-3xl font-bold tracking-tight text-brand-300 dark:text-brand-700">
           Lieux & horaires
         </h2>
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {schedule.map((s, i) => (
             <article
               key={`${s.day}-${i}`}
-              className="group rounded-2xl border border-primary-200 dark:border-secondary-600 bg-white dark:bg-secondary-900 p-5 shadow-sm hover:shadow-md transition-all"
+              className={`group rounded-2xl border p-5 shadow-sm hover:shadow-md transition-all ${
+                s.club === "WAP"
+                  ? "bg-primary-50 dark:bg-primary-900 border-primary-200 dark:border-primary-700"
+                  : "bg-secondary-50 dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700"
+              }`}
             >
               <header className="flex items-baseline justify-between gap-2">
                 <h3 className="text-lg font-semibold text-secondary-600 dark:text-primary-100 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">
@@ -90,13 +97,27 @@ export default function PratiquePage() {
                 {s.time}
               </p>
               <p className="text-primary-600 dark:text-primary-200">
-                {s.venue}
+                {s.mapUrl ? (
+                  <Link
+                    href={s.mapUrl}
+                    target="_blank"
+                    className="text-brand-600 hover:text-brand-700 transition-colors font-medium"
+                  >
+                    {s.venue}
+                  </Link>
+                ) : (
+                  s.venue
+                )}
+              </p>
+              <p className="text-sm text-secondary-700 dark:text-primary-300">
+                {s.address}
               </p>
             </article>
           ))}
         </div>
-        <p className="mt-6 text-sm text-primary-600 dark:text-primary-300">
-          * Les créneaux peuvent évoluer selon la saison et la disponibilité des gymnases.
+        <p className="mt-6 text-sm text-secondary-300 dark:text-primary-700">
+          * Les créneaux peuvent évoluer selon la saison et la disponibilité des
+          gymnases.
         </p>
       </section>
 
@@ -110,14 +131,17 @@ export default function PratiquePage() {
               </div>
               <h2
                 id="gear-title"
-                className="mt-3 text-3xl font-semibold tracking-tight text-brand-700 dark:text-brand-300"
+                className="mt-3 text-3xl font-semibold tracking-tight text-brand-300 dark:text-brand-700"
               >
                 Tenue & matériel
               </h2>
               <ul className="mt-5 space-y-3 text-secondary-700 dark:text-primary-100">
                 {gearList.map((item, idx) => (
                   <li className="flex gap-3" key={idx}>
-                    <span aria-hidden className="mt-1 text-brand-600 dark:text-brand-300">
+                    <span
+                      aria-hidden
+                      className="mt-1 text-brand-600 dark:text-brand-300"
+                    >
                       {item.icon}
                     </span>
                     <span>{item.text}</span>
@@ -138,8 +162,8 @@ export default function PratiquePage() {
 
       {/* Niveaux & inscription */}
       <section className="mb-14">
-        <h2 className="text-3xl font-bold tracking-tight text-brand-700 dark:text-brand-300">
-          Niveaux & inscription
+        <h2 className="text-3xl font-bold tracking-tight text-brand-300 dark:text-brand-700">
+          Différentes pratiques
         </h2>
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {levels.map((level, idx) => (
@@ -156,19 +180,22 @@ export default function PratiquePage() {
             </div>
           ))}
         </div>
-        <div className="mt-8">
-          <Link
-            href="/Tarifs"
-            className="inline-block rounded-xl bg-brand-600 hover:bg-brand-500 active:bg-brand-600/90 px-5 py-3 text-white font-semibold shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-50 dark:focus-visible:ring-offset-secondary-800"
-          >
-            Tarifs & inscription
-          </Link>
+        <div className="mt-8"></div>
+      </section>
+
+
+      <section className="mb-14">
+        <h2 className="text-3xl font-bold tracking-tight text-brand-300 dark:text-brand-700">
+          Tarifs & inscription
+        </h2>
+        <div className="mt-8 rounded-2xl border border-primary-200 dark:border-secondary-600 bg-white dark:bg-secondary-900 p-6 shadow-sm">
+          <Tarifs />
         </div>
       </section>
 
       {/* FAQ */}
       <section className="mb-14">
-        <h2 className="text-3xl font-bold tracking-tight text-brand-700 dark:text-brand-300">
+        <h2 className="text-3xl font-bold tracking-tight text-brand-300 dark:text-brand-700">
           FAQ
         </h2>
         <div className="mt-8 space-y-4">

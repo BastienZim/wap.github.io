@@ -17,21 +17,7 @@ function normalizeSrc(src: string) {
   return cleaned.startsWith("/") ? cleaned : `/${cleaned}`;
 }
 
-// Tiny shimmer to guarantee a blur placeholder for any string src
-const shimmerSVG = (w: number, h: number, tone = "#f3f4f6") => `
-  <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}">
-    <defs><linearGradient id="g">
-      <stop stop-color="${tone}" offset="20%"/>
-      <stop stop-color="#e5e7eb" offset="50%"/>
-      <stop stop-color="${tone}" offset="80%"/>
-    </linearGradient></defs>
-    <rect width="${w}" height="${h}" fill="${tone}"/>
-    <rect id="r" width="${w}" height="${h}" fill="url(#g)"/>
-    <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1.6s" repeatCount="indefinite"/>
-  </svg>`;
-const toBase64 = (s: string) =>
-  (typeof window === "undefined" ? Buffer.from(s).toString("base64") : window.btoa(s));
-// (Removed unused blurDataURL placeholder constant)
+// (Removed unused shimmer/placeholder helpers previously defined here to satisfy linter.)
 
 type Props = {
   slides?: Slide[];
