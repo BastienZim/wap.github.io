@@ -31,15 +31,17 @@ export default function RootLayout({
         `}</Script>
       </head>
 
-      {/* Use Tailwind v4 tokens so surfaces match your @theme colors */}
+      {/* Use CSS custom properties for proper theme switching */}
       <body
         className="
-          bg-primary-50 dark:bg-secondary-800
-          text-foreground
           antialiased
           min-h-screen
           flex flex-col
         "
+        style={{
+          backgroundColor: 'rgb(var(--color-background))',
+          color: 'rgb(var(--color-foreground))'
+        }}
       >
         <ThemeProvider
           attribute="class"

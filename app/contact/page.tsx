@@ -4,6 +4,7 @@
 "use client";
 
 import { useState } from "react";
+import ThemeGradientBackground from "@/components/ThemeGradientBackground";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -21,18 +22,25 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="container mx-auto max-w-2xl px-4 py-12">
+    <>
+      <ThemeGradientBackground />
+      <main className="relative container mx-auto max-w-2xl px-4 py-12">
       <h1 className="mb-6 text-3xl font-bold text-brand-700 dark:text-brand-300">
         Contactez-nous
       </h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-900"
+        className="space-y-4 rounded-lg p-6 shadow-md backdrop-blur-sm"
+        style={{
+          backgroundColor: 'rgb(var(--color-background) / 80%)',
+          border: '1px solid rgb(var(--color-foreground) / 20%)'
+        }}
       >
         <div>
           <label
             htmlFor="name"
-            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="mb-1 block text-sm font-medium"
+            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
           >
             Nom
           </label>
@@ -43,14 +51,20 @@ export default function ContactPage() {
             required
             value={form.name}
             onChange={handleChange}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            style={{
+              backgroundColor: 'rgb(var(--color-background))',
+              border: '1px solid rgb(var(--color-foreground) / 30%)',
+              color: 'rgb(var(--color-foreground))'
+            }}
           />
         </div>
 
         <div>
           <label
             htmlFor="email"
-            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="mb-1 block text-sm font-medium"
+            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
           >
             Email
           </label>
@@ -61,14 +75,20 @@ export default function ContactPage() {
             required
             value={form.email}
             onChange={handleChange}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            style={{
+              backgroundColor: 'rgb(var(--color-background))',
+              border: '1px solid rgb(var(--color-foreground) / 30%)',
+              color: 'rgb(var(--color-foreground))'
+            }}
           />
         </div>
 
         <div>
           <label
             htmlFor="message"
-            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="mb-1 block text-sm font-medium"
+            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
           >
             Message
           </label>
@@ -79,7 +99,12 @@ export default function ContactPage() {
             required
             value={form.message}
             onChange={handleChange}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
+            style={{
+              backgroundColor: 'rgb(var(--color-background))',
+              border: '1px solid rgb(var(--color-foreground) / 30%)',
+              color: 'rgb(var(--color-foreground))'
+            }}
           />
         </div>
 
@@ -91,5 +116,6 @@ export default function ContactPage() {
         </button>
       </form>
     </main>
+    </>
   );
 }

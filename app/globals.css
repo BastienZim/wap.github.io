@@ -4,7 +4,7 @@
 /* 2) Define tokens */
 @theme {
   /* UI surfaces (space-separated RGB = supports /opacity utilities) */
-  --color-background: 254 253 255; /* white */
+  --color-background: 243 253 255; /* white */
   --color-foreground: 40 30 20;
 
   /* handy if you reference it */

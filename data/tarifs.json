@@ -1,0 +1,68 @@
+{
+  "sectionId": "carousel_7f36",
+  "title": "Tarifs",
+  "gradient": "bg-gradient-to-b from-[#FEB454] to-[#F9E79B]",
+  "cards": [
+    {
+      "title": "Adhésion",
+      "image": {
+        "src": "images/directly_useful/FFKlogogris.png",
+        "alt": "FFK Logo"
+      },
+      "items": [
+        {
+          "label": "Club (obligatoire)",
+          "price": "16 €"
+        },
+        {
+          "label": "FFK (obligatoire)",
+          "price": "39 €"
+        },
+        {
+          "label": "Wado Academy",
+          "price": "30 €"
+        }
+      ]
+    },
+    {
+      "title": "Cotisation",
+      "image": {
+        "src": "images/directly_useful/logowap.png",
+        "alt": "WAP Logo"
+      },
+      "subtitle": "1 cours hebdo / 2 et +",
+      "items": [
+        {
+          "label": "Etudiant, en recherche d'emploi",
+          "price": "210 €",
+          "bold": true
+        },
+        {
+          "label": "Adultes 1 cours hebdo",
+          "price": "210 €"
+        },
+        {
+          "label": "Adultes 2+ cours hebdo",
+          "price": "270 €"
+        },
+        {
+          "label": "Passerelle WAP/MEIWAKAN",
+          "price": "130 €"
+        }
+      ]
+    },
+    {
+      "title": "À la carte",
+      "image": {
+        "src": "images/directly_useful/pictoprojectiongris.png",
+        "alt": "Projection Icon"
+      },
+      "items": [
+        {
+          "label": "Carte 6 séances",
+          "price": "50 €"
+        }
+      ]
+    }
+  ]
+}

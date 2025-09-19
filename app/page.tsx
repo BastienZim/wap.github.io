@@ -7,7 +7,7 @@ import LieuxHoraires from "@/components/LieuxHoraires";
 
 export default function Home() {
   return (
-    <main className="bg-primary-100 min-h-screen w-full">
+    <main className="min-h-screen w-full" style={{ backgroundColor: 'rgb(var(--color-background))' }}>
  
       <Hero />
 

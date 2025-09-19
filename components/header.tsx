@@ -11,16 +11,15 @@ const links = [
     { href: "/pratique", label: "Pratique" },
     { href: "/apropos", label: "À propos" },
     { href: "/galerie", label: "Galerie" },
+    { href: "/new_images_section", label: "new_images_section" },
     { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [isDark, setIsDark] = useState<boolean | null>(null);
-    const [scrolled, setScrolled] = useState(false);
     const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
-    const isHome = pathname === "/";
     const sheetRef = useRef<HTMLDivElement>(null);
 
     // Initialize theme from localStorage or system preference
@@ -53,13 +52,7 @@ export default function Header() {
         }
     }, [open, mounted]);
 
-    // Add subtle shadow when scrolling
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 8);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    // (Removed scrolled state logic - unused)
 
     // Close on ESC & trap focus when mobile menu is open
     useEffect(() => {
@@ -147,6 +140,7 @@ export default function Header() {
                                 const active = isActive(l.href);
                                 return (
                                     <li key={l.href}>
+                                        {/* Base Link Element */}
                                         <Link
                                             href={l.href}
                                             aria-current={active ? "page" : undefined}
@@ -154,11 +148,12 @@ export default function Header() {
                                                 `relative inline-flex items-center rounded-full px-3.5 py-2 transition motion-safe:duration-200
                                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2
                                                 ${active
-                                                    ? "bg-brand-500/20 ring-1 ring-brand-500/30 text-secondary-900 dark:text-secondary-500 font-semibold"
+                                                    ? "bg-brand-500/20 ring-1 ring-brand-500/30 text-secondary-900 dark:text-primary-600 font-semibold"
                                                     : "text-brand-600 dark:text-brand-500 hover:bg-primary-100/60 dark:hover:bg-secondary-700/60 hover:text-primary-700 dark:hover:text-primary-200 font-medium"}`
-                                                    
                                             }
                                         >
+                                            {/* Background Effect Layer */}
+                                            {/* Creates a pill-shaped highlight behind the text */}
                                             <span className={
                                                 `absolute inset-0 -z-10 rounded-full opacity-0 scale-95 motion-safe:transition-all motion-safe:duration-300
                                                 ${active
@@ -167,13 +162,14 @@ export default function Header() {
                                             }
                                                 aria-hidden="true"
                                             />
+                                            {/* Link Text and Animated Underline */}
                                             <span className="relative">
                                                 {l.label}
                                                 <span
                                                     className={
                                                         `absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 motion-safe:transition-transform motion-safe:duration-300
                                                         ${active
-                                                            ? "scale-x-100 bg-secondary-700/80 dark:bg-primary-300/80"
+                                                            ? "scale-x-100 bg-secondary-700/80 dark:bg-success-700/80"
                                                             : "group-hover:scale-x-100 bg-brand-500/60"}`
                                                     }
                                                     aria-hidden="true"

@@ -3,16 +3,6 @@ import Image from "@/components/ui/BaseImage";
 import Link from "next/link";
 import { schedule } from "../data/schedule";
 
-const venueLinks: Record<string, string> = {
-	"Gymnase de la tour d'auvergne":
-		"https://www.google.com/maps/place/Tour+d'Auvergne+Gymnase/",
-	"Gymnase Jean Dame":
-		"https://www.google.com/maps/place/Espace+Jean+Dame/@48.8665737,2.3452261,15z/",
-	"Centre Victoire Tinayre": "https://www.google.com/maps/place/Gymnase+Tinayre/",
-	"Centre Jacques Bravo": "https://www.google.com/maps/place/Gymnase+Jacques+Bravo/",
-	"Dojo du stade Charléty": "https://www.google.com/maps/place/Stade+Charléty/",
-};
-
 const landmarks = [
 	{
 		src: "images/directly_useful/pictotoureiffel2.png",
@@ -67,7 +57,7 @@ export default function LieuxHorairesAligned() {
 					/>
 
 					{/* Landmark icons, positioned by percentage */}
-					{landmarks.map((icon, idx) => (
+					{landmarks.map((icon) => (
 						<div
 							key={icon.alt}
 							className="absolute z-20"
@@ -99,14 +89,14 @@ export default function LieuxHorairesAligned() {
 					</p>
 					<ul className="mt-4 space-y-3">
 						{schedule.map((item, idx) => (
-							<li key={idx}>
+							<li key={item.day + idx}>
 								<span className="font-semibold">
 									{item.day} {item.time}
 								</span>{" "}
 								—{" "}
-								{venueLinks[item.venue] ? (
+								{item.mapUrl ? (
 									<Link
-										href={venueLinks[item.venue]}
+										href={item.mapUrl}
 										target="_blank"
 										className="text-tertiary-700 hover:underline font-medium"
 									>

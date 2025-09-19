@@ -31,7 +31,7 @@ const shimmerSVG = (w: number, h: number, tone = "#f3f4f6") => `
   </svg>`;
 const toBase64 = (s: string) =>
   (typeof window === "undefined" ? Buffer.from(s).toString("base64") : window.btoa(s));
-const blurDataURL = `data:image/svg+xml;base64,${toBase64(shimmerSVG(24, 24))}`;
+// (Removed unused blurDataURL placeholder constant)
 
 type Props = {
   slides?: Slide[];

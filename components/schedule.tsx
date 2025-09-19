@@ -1,7 +1,5 @@
 // components/Schedule.tsx
-import { schedule, venueLinks } from "../data/schedule";
-
-const cleanClub = (club: string) => club.replace(/[>]+$/g, "");
+import { schedule } from "../data/schedule";
 
 
 export default function Schedule() {
@@ -51,9 +49,9 @@ export default function Schedule() {
                 </td>
                 <td className="px-4 py-2 text-gray-800">{item.time}</td>
                 <td className="px-4 py-2 text-gray-800">
-                  {venueLinks[item.venue] ? (
+                  {item.mapUrl ? (
                     <a
-                      href={venueLinks[item.venue]}
+                      href={item.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-brand-500 hover:text-secondary-600 transition-colors font-medium no-underline"
@@ -65,7 +63,7 @@ export default function Schedule() {
                   )}
                 </td>
                 <td className="px-4 py-2 font-semibold text-tertiary-600">
-                  {cleanClub(item.club)}
+                  {item.club.replace(/[>]+$/g, "")}
                 </td>
               </tr>
             ))}
