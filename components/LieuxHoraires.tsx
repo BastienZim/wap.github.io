@@ -32,9 +32,9 @@ const landmarks = [
 
 export default function LieuxHorairesAligned() {
 	return (
-		<section id="carousel_212e" className="py-16 bg-primary-100 text-white">
+		<section id="carousel_212e" className="py-16">
 			<div className="mx-auto max-w-5xl px-6">
-				<h3 className="text-3xl md:text-4xl font-bold text-center mb-8 text-neutral-900">
+				<h3 className="text-3xl md:text-4xl font-bold text-center mb-8 text-foreground">
 					Lieux &amp; Horaires
 				</h3>
 
@@ -82,14 +82,14 @@ export default function LieuxHorairesAligned() {
 				</div>
 
 				{/* Content card with links/times */}
-				<div className="mt-8 rounded-2xl bg-white/95 text-gray-900 shadow-lg p-6 md:p-8">
-					<p>
+				<div className="mt-8 rounded-2xl shadow-lg p-6 md:p-8 bg-white dark:bg-primary-700">
+					<p className="text-foreground">
 						Les entraînements se déroulent en soirée et week-end sur plusieurs
 						Lieux à Paris :
 					</p>
 					<ul className="mt-4 space-y-3">
 						{schedule.map((item, idx) => (
-							<li key={item.day + idx}>
+							<li key={item.day + idx} className="text-foreground">
 								<span className="font-semibold">
 									{item.day} {item.time}
 								</span>{" "}
@@ -98,7 +98,7 @@ export default function LieuxHorairesAligned() {
 									<Link
 										href={item.mapUrl}
 										target="_blank"
-										className="text-brand-600 hover:text-brand-700 transition-colors font-medium"
+										className="text-brand-500 hover:text-brand-700 transition-colors font-medium"
 									>
 										{item.venue}
 									</Link>
@@ -106,12 +106,12 @@ export default function LieuxHorairesAligned() {
 									item.venue
 								)}
 								{item.club ? (
-									<span className="text-gray-500"> ({item.club})</span>
+									<span className="text-secondary-500 dark:text-secondary-200"> ({item.club})</span>
 								) : null}
 							</li>
 						))}
 					</ul>
-					<p className="mt-4 text-gray-700">
+					<p className="mt-4 text-secondary-700 dark:text-secondary-200">
 						Des cours d’essai sont proposés, merci de prendre contact au
 						préalable.
 					</p>

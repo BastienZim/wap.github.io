@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CTA() {
   return (
     <section className="my-20">
-      <div className="relative overflow-hidden rounded-2xl bg-[#FEB454] text-gray-900 shadow-lg">
+      <div className="relative overflow-hidden rounded-2xl bg-[#FEB454] text-secondary-900 shadow-lg">
         {/* Decorative pattern */}
         <div className="absolute inset-0 bg-[url('/images/directly_useful/pictotoureiffel2.png')] bg-cover bg-center opacity-10" />
 

@@ -6,9 +6,9 @@ export default function Schedule() {
   return (
     <section
       id="schedule"
-      className="w-8/10 mx-auto p-6 bg-white rounded-lg shadow"
+      className="w-8/10 mx-auto p-6 rounded-lg shadow dark:bg-primary-800"
     >
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-900">
+      <h2 className="text-2xl font-bold mb-6 text-center text-foreground">
         Planning Hebdomadaire
       </h2>
 
@@ -44,11 +44,11 @@ export default function Schedule() {
                   focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 focus-visible:ring-offset-background
                 "
               >
-                <td className="px-4 py-2 font-medium text-gray-900">
+                <td className="px-4 py-2 font-medium text-foreground">
                   {item.day}
                 </td>
-                <td className="px-4 py-2 text-gray-800">{item.time}</td>
-                <td className="px-4 py-2 text-gray-800">
+                <td className="px-4 py-2 text-secondary-700 dark:text-secondary-300">{item.time}</td>
+                <td className="px-4 py-2 text-secondary-700 dark:text-secondary-300">
                   {item.mapUrl ? (
                     <a
                       href={item.mapUrl}

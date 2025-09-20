@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { GalleryImage } from "./galleryUtils";
 import Lightbox, { LightboxItem } from "@/components/ui/Lightbox";
-
+import CTA from "@/components/cta-banner";
 interface GalleryClientPageProps {
   images: GalleryImage[];
 }
@@ -194,20 +194,7 @@ export default function GalleryClientPage({ images }: GalleryClientPageProps) {
         )}
       </section>
 
-      <section className="mt-16 text-center">
-        <h2 className="text-2xl font-semibold text-brand-700 dark:text-brand-400 mb-4">
-          Rejoignez-nous sur le tatami
-        </h2>
-        <p className="mb-6 text-[color:rgb(var(--color-foreground)_/_80%)] max-w-2xl mx-auto">
-          Envie de faire partie de ces moments ? Venez essayer un cours gratuitement et découvrir le Wado-Ryu.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl px-6 py-3 transition-colors"
-        >
-          Nous contacter
-        </Link>
-      </section>
+      <CTA/>
     </main>
 
     <Lightbox

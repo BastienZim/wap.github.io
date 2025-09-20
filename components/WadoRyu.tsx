@@ -12,15 +12,15 @@ type Card = {
 
 function InfoCard({ image, alt, titleBold, titleRest, text }: Card) {
   return (
-    <div className="p-6 rounded-lg bg-white shadow text-center">
-      <div className="relative mx-auto mb-4 h-32 w-32 rounded-full border-2 border-gray-300 overflow-hidden">
+    <div className="p-6 rounded-lg bg-gradient-to-t from-[#F9E79B] to-[#FEB454] shadow text-center">
+      <div className="relative mx-auto mb-4 h-32 w-32 rounded-full border-2 border-secondary-300 dark:border-secondary-600 overflow-hidden">
         <Image src={image} alt={alt} className="object-cover" />
       </div>
-      <h3 className="text-xl font-bold text-tertiary-700">
-        <span className="font-extrabold">{titleBold}</span> {titleRest}
+      <h3 className="text-xl font-bold text-tertiary-800 mb-3">
+        <strong>{titleBold}</strong> {titleRest}
       </h3>
-      <div className="my-3 h-[2px] w-full bg-tertiary-700" />
-      <p className="text-gray-800 leading-relaxed text-sm">{text}</p>
+      <div className="my-3 h-[2px] w-full bg-tertiary-800" />
+      <p className="text-secondary-800 dark:text-secondary-400 leading-relaxed text-sm">{text}</p>
     </div>
   );
 }

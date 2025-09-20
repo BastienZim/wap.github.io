@@ -175,7 +175,7 @@ function ThumbnailCard({
 
           {/* Error fallback block (keeps layout stable) */}
           {errored && (
-            <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-gray-100 text-gray-500">
+            <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-secondary-100 dark:bg-secondary-700 text-secondary-500 dark:text-secondary-400">
               <span className="px-2 text-xs">Image indisponible</span>
             </div>
           )}
@@ -289,7 +289,7 @@ export default function GalleryClient({ photos = [] }: { photos?: Photo[] }) {
       {/* Grid */}
       <section className="container mx-auto px-6 py-12">
         {filtered.length === 0 ? (
-          <p className="text-gray-600">
+          <p className="text-secondary-600 dark:text-secondary-400">
             Aucune photo pour cette catégorie, revenez bientôt.
           </p>
         ) : (
@@ -314,7 +314,7 @@ export default function GalleryClient({ photos = [] }: { photos?: Photo[] }) {
           * Merci de demander l’autorisation avant toute réutilisation des photos.
         </p>
       </section>
-
+h bu
       <Lightbox
         isOpen={isOpen}
         index={index}

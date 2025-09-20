@@ -30,7 +30,6 @@
         "src": "images/directly_useful/logowap.png",
         "alt": "WAP Logo"
       },
-      "subtitle": "1 cours hebdo / 2 et +",
       "items": [
         {
           "label": "Etudiant, en recherche d'emploi",
@@ -39,15 +38,18 @@
         },
         {
           "label": "Adultes 1 cours hebdo",
-          "price": "210 €"
+          "price": "210 €",
+          "bold": true
         },
         {
           "label": "Adultes 2+ cours hebdo",
-          "price": "270 €"
+          "price": "270 €",
+          "bold": true
         },
         {
           "label": "Passerelle WAP/MEIWAKAN",
-          "price": "130 €"
+          "price": "130 €",
+          "bold": true
         }
       ]
     },

@@ -1,0 +1,18 @@
+{
+  "email": "contact@wadoacademyparis.fr",
+  "phone": {
+    "display": "+33 1 23 45 67 89",
+    "tel": "+33123456789"
+  },
+  "social": [
+    {
+      "name": "Facebook",
+      "url": "https://facebook.com/wadoacademyparis"
+    },
+    {
+      "name": "Instagram", 
+      "url": "https://instagram.com/wadoacademyparis"
+    }
+  ],
+  "description": "Contactez-nous pour toute question sur nos cours de karaté Wado-Ryu ou pour vous inscrire."
+}

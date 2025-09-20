@@ -3,119 +3,127 @@
 
 "use client";
 
-import { useState } from "react";
-import ThemeGradientBackground from "@/components/ThemeGradientBackground";
+// import ThemeGradientBackground from "@/components/ThemeGradientBackground";
+import { schedule } from "@/data/schedule";
+import contactData from "@/data/contact.json";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Message envoyé par ${form.name} (${form.email}) : ${form.message}`);
-    setForm({ name: "", email: "", message: "" });
-  };
 
   return (
     <>
-      <ThemeGradientBackground />
-      <main className="relative container mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-6 text-3xl font-bold text-brand-700 dark:text-brand-300">
-        Contactez-nous
-      </h1>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 rounded-lg p-6 shadow-md backdrop-blur-sm"
-        style={{
-          backgroundColor: 'rgb(var(--color-background) / 80%)',
-          border: '1px solid rgb(var(--color-foreground) / 20%)'
-        }}
-      >
-        <div>
-          <label
-            htmlFor="name"
-            className="mb-1 block text-sm font-medium"
-            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
-          >
-            Nom
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={form.name}
-            onChange={handleChange}
-            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
-            style={{
-              backgroundColor: 'rgb(var(--color-background))',
-              border: '1px solid rgb(var(--color-foreground) / 30%)',
-              color: 'rgb(var(--color-foreground))'
-            }}
-          />
+      <main className="container mx-auto max-w-4xl px-6 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-light text-foreground mb-4 tracking-wide">
+            Contact
+          </h1>
+          <div className="w-12 h-px bg-brand-500 mx-auto"></div>
         </div>
 
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-1 block text-sm font-medium"
-            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
-            style={{
-              backgroundColor: 'rgb(var(--color-background))',
-              border: '1px solid rgb(var(--color-foreground) / 30%)',
-              color: 'rgb(var(--color-foreground))'
-            }}
-          />
-        </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Contact Information Section */}
+          <div className="space-y-12">
+            {/* Description */}
+            <div className="text-center">
+              <p className="text-lg text-secondary-600 dark:text-secondary-400 font-light">
+                {contactData.description}
+              </p>
+            </div>
 
-        <div>
-          <label
-            htmlFor="message"
-            className="mb-1 block text-sm font-medium"
-            style={{ color: 'rgb(var(--color-foreground) / 80%)' }}
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            required
-            value={form.message}
-            onChange={handleChange}
-            className="w-full rounded-md px-3 py-2 shadow-sm focus:border-brand-500 focus:ring-brand-500"
-            style={{
-              backgroundColor: 'rgb(var(--color-background))',
-              border: '1px solid rgb(var(--color-foreground) / 30%)',
-              color: 'rgb(var(--color-foreground))'
-            }}
-          />
-        </div>
+            {/* Direct Contact */}
+            <div className="space-y-6">
+              <div className="space-y-1">
+                <p className="text-sm uppercase tracking-widest text-secondary-500 dark:text-secondary-400 font-light">
+                  Email
+                </p>
+                <a 
+                  href={`mailto:${contactData.email}`} 
+                  className="text-xl text-foreground hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-light"
+                >
+                  {contactData.email}
+                </a>
+              </div>
+              
+              <div className="space-y-1">
+                <p className="text-sm uppercase tracking-widest text-secondary-500 dark:text-secondary-400 font-light">
+                  Téléphone
+                </p>
+                <a 
+                  href={`tel:${contactData.phone.tel}`} 
+                  className="text-xl text-foreground hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-light"
+                >
+                  {contactData.phone.display}
+                </a>
+              </div>
+            </div>
 
-        <button
-          type="submit"
-          className="w-full rounded-md bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-        >
-          Envoyer
-        </button>
-      </form>
-    </main>
+            {/* Locations */}
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-widest text-secondary-500 dark:text-secondary-400 font-light">
+                Dojos
+              </p>
+              <div className="space-y-3">
+                {Array.from(new Set(schedule.map(item => JSON.stringify({ venue: item.venue, address: item.address, mapUrl: item.mapUrl }))))
+                  .map(uniqueVenue => JSON.parse(uniqueVenue))
+                  .map((location, index) => (
+                    <div key={index} className="space-y-1">
+                      <a
+                        href={location.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-foreground hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-light"
+                      >
+                        {location.venue}
+                      </a>
+                      <p className="text-sm text-secondary-600 dark:text-secondary-400 font-light">
+                        {location.address}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            {/* Schedule */}
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-widest text-secondary-500 dark:text-secondary-400 font-light">
+                Horaires
+              </p>
+              <div className="space-y-2">
+                {schedule.map((item, index) => (
+                  <div key={index} className="flex justify-between items-baseline">
+                    <span className="text-foreground font-light">
+                      {item.day} {item.time}
+                    </span>
+                    <span className="text-sm text-secondary-500 dark:text-secondary-400 font-light">
+                      {item.club}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-widest text-secondary-500 dark:text-secondary-400 font-light">
+                Suivez-nous
+              </p>
+              <div className="flex space-x-6">
+                {contactData.social.map((social, index) => (
+                  <a 
+                    key={index}
+                    href={social.url} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-light"
+                  >
+                    {social.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
     </>
   );
 }
