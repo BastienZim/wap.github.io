@@ -137,7 +137,7 @@ export default function Carousel({
                         loading={isActive ? "eager" : "lazy"}
                       />
                 ) : (
-                  <div className="absolute inset-0 grid place-items-center bg-gray-100 text-gray-600">
+                  <div className="absolute inset-0 grid place-items-center bg-secondary-100 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-300">
                     <span className="text-sm">Image indisponible</span>
                   </div>
                 )}
@@ -147,7 +147,7 @@ export default function Carousel({
                 <h2 className="font-display text-3xl md:text-5xl leading-tight tracking-widest">
                   {s.title}
                 </h2>
-                <p className="mt-6 text-gray-700 text-justify">{s.text}</p>
+                <p className="mt-6 text-secondary-700 dark:text-secondary-300 text-justify">{s.text}</p>
                 <div className="mt-8">
                   <Link
                     href={s.href}
@@ -206,8 +206,8 @@ export default function Carousel({
                   start();
                 }}
                 className={[
-                  "h-2 w-6 rounded bg-gray-400/70 transition-opacity",
-                  i === index ? "bg-gray-900" : "opacity-60 hover:opacity-90",
+                  "h-2 w-6 rounded bg-secondary-400/70 transition-opacity",
+                  i === index ? "bg-secondary-900 dark:bg-secondary-200" : "opacity-60 hover:opacity-90",
                 ].join(" ")}
               />
             </li>
@@ -242,7 +242,7 @@ export default function Carousel({
                     // loading={isActive ? "eager" : "lazy"}
                   />
                 ) : (
-                  <div className="absolute inset-0 grid place-items-center bg-gray-100 text-gray-500 text-[11px]">
+                  <div className="absolute inset-0 grid place-items-center bg-secondary-100 dark:bg-secondary-700 text-secondary-500 dark:text-secondary-400 text-[11px]">
                     N/A
                   </div>
                 )}

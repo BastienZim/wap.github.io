@@ -1,4 +1,8 @@
 /* Wado-Karate Info Page Styles */
+.wado-info-page {
+  color: rgb(var(--color-foreground));
+}
+
 .karate-section {
   position: relative;
   padding: 2rem;

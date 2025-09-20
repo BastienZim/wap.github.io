@@ -6,7 +6,7 @@ import { schedule } from "@/data/schedule";
 import { gearList } from "@/data/gear";
 import { faqList } from "@/data/faq";
 import { levels } from "@/data/levels";
-
+import CTA from "@/components/cta-banner";
 
 export const metadata = {
   title: "Pratique – Wado Academy Paris",
@@ -216,30 +216,7 @@ export default function PratiquePage() {
       </section>
 
       {/* CTA final */}
-      <section>
-        <div className="rounded-3xl p-8 md:p-10 bg-gradient-to-br from-brand-600 to-brand-700 text-white shadow-sm">
-          <h2 className="text-2xl md:text-3xl font-bold">
-            Envie d’essayer ? Rejoignez <span className="font-bold">WAP</span> !
-          </h2>
-          <p className="mt-2 text-brand-50/90">
-            Écrivez-nous pour un premier cours et des conseils personnalisés.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="rounded-xl bg-white text-brand-700 hover:bg-brand-50 px-5 py-3 font-semibold shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
-            >
-              Contact
-            </Link>
-            <Link
-              href="/Planning"
-              className="rounded-xl border border-white/60 text-white hover:bg-white/10 px-5 py-3 font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
-            >
-              Planning
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTA />
     </main>
   );
 }

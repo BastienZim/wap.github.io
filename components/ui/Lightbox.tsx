@@ -153,7 +153,7 @@ export default function Lightbox({
               }}
             />
           ) : (
-            <div className="absolute inset-0 grid place-items-center rounded-xl bg-gray-100 text-gray-600">
+            <div className="absolute inset-0 grid place-items-center rounded-xl bg-secondary-100 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-300">
               <span className="px-2 text-sm">Image indisponible</span>
             </div>
           )}
