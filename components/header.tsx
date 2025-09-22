@@ -14,6 +14,7 @@ const links = [
     { href: "/new_images_section", label: "new_images_section" },
     { href: "/contact", label: "Contact" },
     { href: "/wado-karate-info", label: "Wikipedia"},
+    { href: "/cours-type", label: "Déroulement d'un cours" }, // Added link
 ];
 
 export default function Header() {

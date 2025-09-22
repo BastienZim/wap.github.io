@@ -1,0 +1,108 @@
+{
+  "totalDurationLabel": "Durée totale",
+  "heroTitle": "Un Cours de Karaté",
+  "heroSubtitle": "Découvrez le déroulement d'un cours typique au WAP Karaté Club. Une progression structurée alliant tradition et modernité.",
+  "progressTitle": "Progression du cours",
+  "stepLabel": "Étape",
+  "onLabel": "sur",
+  "programLabel": "Au programme :",
+  "placeholderText": "Illustration à venir",
+  "ctaTitle": "Prêt à découvrir le karaté Wado-Ryu ?",
+  "ctaSubtitle": "Rejoignez-nous pour votre premier cours d'essai gratuit et découvrez la richesse de cet art martial traditionnel.",
+  "ctaPrimaryButton": "Réserver mon cours d'essai",
+  "ctaSecondaryButton": "Voir les horaires",
+  "playButton": "▶️ Démarrer la démonstration",
+  "pauseButton": "⏸️ Pause",
+  "steps": [
+    {
+      "id": 1,
+      "title": "Salut & Méditation",
+      "duration": "5 min",
+      "description": "Nous commençons chaque cours par le salut traditionnel et un moment de méditation pour se concentrer.",
+      "details": [
+        "Salut au dojo et au sensei",
+        "Position seiza (à genoux)",
+        "Méditation silencieuse",
+        "Préparation mentale"
+      ],
+      "image": "/images/meditation.jpg",
+      "color": "from-primary-500 to-primary-700",
+      "icon": "🧘"
+    },
+    {
+      "id": 2,
+      "title": "Échauffement",
+      "duration": "10 min",
+      "description": "Préparation physique progressive pour éviter les blessures et optimiser les performances.",
+      "details": [
+        "Mobilisation articulaire",
+        "Étirements dynamiques",
+        "Exercices cardio-vasculaires",
+        "Renforcement musculaire"
+      ],
+      "image": "/images/echauffement.jpg",
+      "color": "from-brand-400 to-brand-600",
+      "icon": "🏃"
+    },
+    {
+      "id": 3,
+      "title": "Techniques de Base",
+      "duration": "15 min",
+      "description": "Apprentissage et perfectionnement des techniques fondamentales du karaté Wado-Ryu.",
+      "details": [
+        "Positions (dachi)",
+        "Blocages (uke)",
+        "Coups de poing (tsuki)",
+        "Coups de pied (geri)"
+      ],
+      "image": "/images/techniques.jpg",
+      "color": "from-secondary-600 to-secondary-800",
+      "icon": "👊"
+    },
+    {
+      "id": 4,
+      "title": "Kata",
+      "duration": "15 min",
+      "description": "Pratique des formes traditionnelles, véritables encyclopédies des techniques de combat.",
+      "details": [
+        "Étude des mouvements",
+        "Rythme et timing",
+        "Applications martiales",
+        "Perfection technique"
+      ],
+      "image": "/images/kata.jpg",
+      "color": "from-primary-600 to-secondary-600",
+      "icon": "🥋"
+    },
+    {
+      "id": 5,
+      "title": "Combat & Applications",
+      "duration": "10 min",
+      "description": "Mise en pratique des techniques apprises dans des situations de combat contrôlé.",
+      "details": [
+        "Kumite de base",
+        "Applications des kata",
+        "Gestion de la distance",
+        "Contrôle et sécurité"
+      ],
+      "image": "/images/kumite.jpg",
+      "color": "from-brand-600 to-secondary-700",
+      "icon": "⚔️"
+    },
+    {
+      "id": 6,
+      "title": "Retour au Calme",
+      "duration": "5 min",
+      "description": "Récupération progressive et salut final pour clôturer le cours dans la tradition.",
+      "details": [
+        "Étirements passifs",
+        "Respiration contrôlée",
+        "Bilan du cours",
+        "Salut final"
+      ],
+      "image": "/images/salut-final.jpg",
+      "color": "from-success-500 to-primary-500",
+      "icon": "🙏"
+    }
+  ]
+}
