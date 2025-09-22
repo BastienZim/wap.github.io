@@ -12,10 +12,10 @@ const links = [
     { href: "/pratique", label: "Pratique" },
     { href: "/apropos", label: "À propos" },
     { href: "/galerie", label: "Galerie" },
-    { href: "/new_images_section", label: "new_images_section" },
+    { href: "/ressources", label: "Ressources" },
     { href: "/contact", label: "Contact" },
     { href: "/wado-karate-info", label: "Wikipedia"},
-    { href: "/cours-type", label: "Déroulement d'un cours" }, // Added link
+    { href: "/cours-type", label: "Déroulement d'un cours" },
 ];
 
 export default function Header() {

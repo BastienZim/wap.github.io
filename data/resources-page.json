@@ -1,0 +1,19 @@
+{
+  "title": "Ressources",
+  "subtitle": "Découvrez une sélection de ressources utiles et intéressantes sur le Wado-Ryu et les arts martiaux.",
+  "sections": {
+    "videos": {
+      "title": "Vidéos",
+      "footer": "D'autres vidéos seront ajoutées régulièrement."
+    },
+    "channels": {
+      "title": "Chaînes recommandées"
+    },
+    "books": {
+      "title": "Livres recommandés"
+    },
+    "documents": {
+      "title": "Documents à venir"
+    }
+  }
+}

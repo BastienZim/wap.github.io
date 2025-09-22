@@ -1,0 +1,13 @@
+{
+  "channels": [
+    {
+      "name": "Kuroobi World",
+      "url": "https://www.youtube.com/@kuroobiworld",
+      "description": "Une excellente chaîne YouTube dédiée aux arts martiaux avec de nombreux contenus sur le Karaté."
+    }
+  ],
+  "documents": {
+    "title": "Documents techniques",
+    "description": "Cette section sera bientôt enrichie avec des guides techniques, historiques et pédagogiques sur le Wado-Ryu."
+  }
+}
