@@ -2,10 +2,12 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import GradientStyleToggle from "@/components/GradientStyleToggle";
 import "@fontsource-variable/inter";
 import "@fontsource/anton";
 import Script from "next/script";
 import type { Metadata } from "next";
+import { GradientStyleProvider } from "@/lib/GradientStyleContext";
 
 export const metadata: Metadata = {
   title: "WAP: Wado Academy Paris",
@@ -51,9 +53,12 @@ export default function RootLayout({
           storageKey="theme"                 /* matches the script above */
           disableTransitionOnChange          /* avoids color transition flicker */
         >
-          <Header />
-          <main className="pb-24">{children}</main>
-          <Footer />
+          <GradientStyleProvider>
+            <Header />
+            <main className="pb-24">{children}</main>
+            <Footer />
+            <GradientStyleToggle />
+          </GradientStyleProvider>
         </ThemeProvider>
       </body>
     </html>

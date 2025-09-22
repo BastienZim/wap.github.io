@@ -17,7 +17,7 @@
     {
       "id": 1,
       "title": "Salut & Méditation",
-      "duration": "5 min",
+      "duration": "10 min",
       "description": "Nous commençons chaque cours par le salut traditionnel et un moment de méditation pour se concentrer.",
       "details": [
         "Salut au dojo et au sensei",
@@ -31,8 +31,8 @@
     },
     {
       "id": 2,
-      "title": "Échauffement",
-      "duration": "10 min",
+      "title": "Échauffement/Étirements",
+      "duration": "20 min",
       "description": "Préparation physique progressive pour éviter les blessures et optimiser les performances.",
       "details": [
         "Mobilisation articulaire",
@@ -46,8 +46,8 @@
     },
     {
       "id": 3,
-      "title": "Techniques de Base",
-      "duration": "15 min",
+      "title": "Kihon (Techniques de Base)",
+      "duration": "30 min",
       "description": "Apprentissage et perfectionnement des techniques fondamentales du karaté Wado-Ryu.",
       "details": [
         "Positions (dachi)",
@@ -62,7 +62,7 @@
     {
       "id": 4,
       "title": "Kata",
-      "duration": "15 min",
+      "duration": "30 min",
       "description": "Pratique des formes traditionnelles, véritables encyclopédies des techniques de combat.",
       "details": [
         "Étude des mouvements",
@@ -77,7 +77,7 @@
     {
       "id": 5,
       "title": "Combat & Applications",
-      "duration": "10 min",
+      "duration": "20 min",
       "description": "Mise en pratique des techniques apprises dans des situations de combat contrôlé.",
       "details": [
         "Kumite de base",
@@ -92,7 +92,7 @@
     {
       "id": 6,
       "title": "Retour au Calme",
-      "duration": "5 min",
+      "duration": "10 min",
       "description": "Récupération progressive et salut final pour clôturer le cours dans la tradition.",
       "details": [
         "Étirements passifs",

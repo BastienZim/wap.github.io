@@ -6,6 +6,7 @@ import wapCards from "@/data/wap-cards.json";
 import wadoHistory from "@/data/wado_history.json";
 import Carousel from "@/components/carousel/carousel";
 import ThemeGradientBackground from "@/components/ThemeGradientBackground";
+import { useGradientStyle } from "@/lib/GradientStyleContext";
 
 type WapCard = {
   title: string;
@@ -29,13 +30,14 @@ type WapSectionData = {
 export default function Page() {
   const sectionA = wapCards as WapSectionData;
   const sectionB = wadoHistory as WapSectionData;
+  const { gradientStyle } = useGradientStyle();
 
   // (Removed unused scroll tracking state)
 
   return (
     <>
-  {/* Using the theme-based karate style for this page */}
-  <ThemeGradientBackground mode="auto" style="wap" /> 
+  {/* Using the gradient style from context */}
+  <ThemeGradientBackground mode="auto" style={gradientStyle} /> 
       <main
         className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-24"
         style={{

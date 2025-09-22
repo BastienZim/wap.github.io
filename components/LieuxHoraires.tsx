@@ -41,9 +41,8 @@ export default function LieuxHorairesAligned() {
 				{/* Map container with white background, then arrondissements, then monuments */}
 				<div className="relative w-full aspect-[700/467] rounded-xl overflow-hidden shadow-lg bg-secondary-100">
 					{/* Paris arrondissements background, slightly reduced size */}
-					<Image
-						src="images/directly_useful/paris_background.png"
-						alt="Paris arrondissements"
+					{/* Wrapper to allow 85% scaling while using fill image without conflicting width/height */}
+					<div
 						className="absolute z-10"
 						style={{
 							top: "50%",
@@ -51,10 +50,18 @@ export default function LieuxHorairesAligned() {
 							width: "85%",
 							height: "85%",
 							transform: "translate(-50%, -50%)",
-							objectFit: "cover",
-							opacity: 1,
 						}}
-					/>
+					>
+						<div className="relative w-full h-full">
+							<Image
+								src="images/directly_useful/paris_background.png"
+								alt="Paris arrondissements"
+								fill
+								objectFit="cover"
+								className="opacity-100"
+							/>
+						</div>
+					</div>
 
 					{/* Landmark icons, positioned by percentage */}
 					{landmarks.map((icon) => (

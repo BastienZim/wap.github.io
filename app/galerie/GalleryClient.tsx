@@ -150,12 +150,15 @@ function ThumbnailCard({
                 setLoaded(true);
               }}
               draggable={false}
+              fill
+              objectFit="cover"
               className={cn(
-                "h-full w-full object-cover object-[50%_20%]",
+                "object-cover object-[50%_20%]",
                 "transition-transform duration-500 group-hover:scale-[1.05]",
                 "motion-safe:transition-opacity motion-safe:duration-700",
                 loaded ? "opacity-100" : "opacity-0"
               )}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           ) : null}
 
@@ -313,8 +316,7 @@ export default function GalleryClient({ photos = [] }: { photos?: Photo[] }) {
         <p className="mt-6 text-sm text-gray-500">
           * Merci de demander l’autorisation avant toute réutilisation des photos.
         </p>
-      </section>
-h bu
+  </section>
       <Lightbox
         isOpen={isOpen}
         index={index}

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
+import { useGradientStyle } from "@/lib/GradientStyleContext";
 
 const links = [
     { href: "/", label: "Accueil" },
@@ -23,6 +24,7 @@ export default function Header() {
     const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
     const sheetRef = useRef<HTMLDivElement>(null);
+    const { gradientStyle, toggleGradientStyle } = useGradientStyle();
 
     // Initialize theme from localStorage or system preference
     useEffect(() => {
@@ -91,6 +93,9 @@ export default function Header() {
         document.documentElement.classList.toggle("dark", next);
         localStorage.setItem("theme", next ? "dark" : "light");
         setIsDark(next);
+        
+        // Also toggle gradient style when theme changes
+        toggleGradientStyle();
     };
 
     const isActive = (href: string) =>
@@ -184,42 +189,55 @@ export default function Header() {
                         </ul>
 
                         {/* Theme toggle (desktop) */}
-                        <button
-                            type="button"
-                            onClick={toggleTheme}
-                            aria-label="Basculer le thème"
-                            aria-pressed={isDark ?? false}
-                            title="Toggle theme"
-                            className={
-                                "ml-2 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-brand-500/20 " +
-                                "bg-success-500/10 dark:bg-success-500/15 hover:bg-success-500/20 dark:hover:bg-success-500/25 " +
-                                "transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2"
-                            }
-                        >
-                            {isDark === null ? null : isDark ? (
-                                <Moon className="h-5 w-5 text-brand-300" />
-                            ) : (
-                                <Sun className="h-5 w-5 text-brand-700" />
-                            )}
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <button
+                                type="button"
+                                onClick={toggleTheme}
+                                aria-label={`Basculer le thème et style (${gradientStyle === 'wap' ? 'WAP' : 'Karaté'})`}
+                                aria-pressed={isDark ?? false}
+                                title={`Toggle theme and gradient (Current: ${gradientStyle})`}
+                                className={
+                                    "ml-2 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-brand-500/20 " +
+                                    "bg-success-500/10 dark:bg-success-500/15 hover:bg-success-500/20 dark:hover:bg-success-500/25 " +
+                                    "transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2"
+                                }
+                            >
+                                {isDark === null ? null : isDark ? (
+                                    <Moon className="h-5 w-5 text-brand-300" />
+                                ) : (
+                                    <Sun className="h-5 w-5 text-brand-700" />
+                                )}
+                                <span className="sr-only">
+                                    {gradientStyle === 'wap' ? 'WAP Style' : 'Karaté Style'}
+                                </span>
+                            </button>
+                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-brand-100 dark:bg-brand-800 text-brand-700 dark:text-brand-300">
+                                {gradientStyle === 'wap' ? 'WAP' : 'Karaté'}
+                            </span>
+                        </div>
                     </nav>
 
                     {/* Mobile: theme + menu button */}
                     <div className="flex items-center gap-2 md:hidden">
-                        <button
-                            type="button"
-                            onClick={toggleTheme}
-                            aria-label="Basculer le thème"
-                            aria-pressed={isDark ?? false}
-                            title="Toggle theme"
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-success-500/10 dark:bg-success-500/15 hover:bg-success-500/20 dark:hover:bg-success-500/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2"
-                        >
-                            {isDark === null ? null : isDark ? (
-                                <Moon className="h-5 w-5 text-brand-300" />
-                            ) : (
-                                <Sun className="h-5 w-5 text-brand-700" />
-                            )}
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <button
+                                type="button"
+                                onClick={toggleTheme}
+                                aria-label={`Basculer le thème et style (${gradientStyle === 'wap' ? 'WAP' : 'Karaté'})`}
+                                aria-pressed={isDark ?? false}
+                                title={`Toggle theme and gradient (Current: ${gradientStyle})`}
+                                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-success-500/10 dark:bg-success-500/15 hover:bg-success-500/20 dark:hover:bg-success-500/25 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2"
+                            >
+                                {isDark === null ? null : isDark ? (
+                                    <Moon className="h-5 w-5 text-brand-300" />
+                                ) : (
+                                    <Sun className="h-5 w-5 text-brand-700" />
+                                )}
+                            </button>
+                            <span className="text-xs font-semibold px-2 py-1 rounded-full bg-brand-100 dark:bg-brand-800 text-brand-700 dark:text-brand-300">
+                                {gradientStyle === 'wap' ? 'WAP' : 'Karaté'}
+                            </span>
+                        </div>
 
                         <button
                             className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-success-500/10 hover:bg-success-500/20 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-500 focus-visible:ring-offset-2"

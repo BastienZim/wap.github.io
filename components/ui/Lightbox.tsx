@@ -33,21 +33,7 @@ function normalizeSrc(src: string | StaticImport) {
   return encodeURI(rooted);
 }
 
-// tiny shimmer so placeholder="blur" never spins forever
-const shimmerSVG = (w: number, h: number, tone = "#f3f4f6") => `
-  <svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}">
-    <defs><linearGradient id="g">
-      <stop stop-color="${tone}" offset="20%"/>
-      <stop stop-color="#e5e7eb" offset="50%"/>
-      <stop stop-color="${tone}" offset="80%"/>
-    </linearGradient></defs>
-    <rect width="${w}" height="${h}" fill="${tone}"/>
-    <rect id="r" width="${w}" height="${h}" fill="url(#g)"/>
-    <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1.6s" repeatCount="indefinite"/>
-  </svg>`;
-const toBase64 = (s: string) =>
-  (typeof window === "undefined" ? Buffer.from(s).toString("base64") : window.btoa(s));
-// (Removed unused blurDataURL constant)
+// (Removed shimmer/blur helpers previously unused)
 
 /* ---------- component ---------- */
 
@@ -136,13 +122,16 @@ export default function Lightbox({
       </Button>
 
       <figure className="max-h-[90vh] w-full max-w-5xl">
-        <div className="relative mx-auto h-[75vh] max-h-[75vh] w-auto">
+        {/* Wrapper must be relative with explicit height for fill layout */}
+        <div className="relative mx-auto h-[75vh] max-h-[75vh] w-full">
           {!errored ? (
             <BaseImage
               key={(typeof currentSrc === "string" ? currentSrc : "imp") + safeIndex}
               src={typeof currentSrc === "string" ? currentSrc : ""}
               alt={current.alt}
-              className="object-contain rounded-xl shadow-xl w-full h-full"
+              fill
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-contain rounded-xl shadow-xl"
               style={{ objectFit: "contain" }}
               loading="eager"
               onError={() => {

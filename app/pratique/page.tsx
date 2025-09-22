@@ -33,14 +33,20 @@ export default function PratiquePage() {
       {/* Hero */}
       <section className="relative overflow-hidden rounded-3xl mb-14 min-h-[400px] md:min-h-[520px] lg:min-h-[600px] flex items-center z-10 ring-1 ring-primary-200 dark:ring-secondary-700 bg-secondary-900/60 dark:bg-secondary-900/70">
         <div className="absolute inset-0">
-          <BaseImage
-            src="/images/directly_useful/OtsukaCalifornia_.jpg"
-            alt=""
-            aria-hidden
-            decoding="async"
-            fetchPriority="high"
-            className="h-full w-full object-cover object-top brightness-90"
-          />
+          <div className="relative w-full h-full">
+            <BaseImage
+              src="/images/directly_useful/OtsukaCalifornia_.jpg"
+              alt=""
+              aria-hidden
+              decoding="async"
+              fetchPriority="high"
+              fill
+              objectFit="cover"
+              className="object-cover object-top brightness-90"
+              sizes="100vw"
+              priority
+            />
+          </div>
           {/* Brand‑tinted overlay for consistency */}
           <div className="absolute inset-0 bg-gradient-to-b from-brand-700/70 via-brand-600/50 to-brand-500/25 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/60 via-secondary-900/30 to-transparent" />
@@ -153,6 +159,8 @@ export default function PratiquePage() {
               <BaseImage
                 src="/images/directly_useful/logowap.png"
                 alt="Logo du dojo"
+                width={176}
+                height={176}
                 className="h-44 w-auto md:h-56 object-contain drop-shadow-sm"
               />
             </div>

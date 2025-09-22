@@ -35,6 +35,8 @@ export default function Tarifs() {
                 <Image
                   src={card.image.src}
                   alt={card.image.alt}
+                  width={128}
+                  height={128}
                   className="object-cover"
                 />
               </div>

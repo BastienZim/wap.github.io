@@ -128,14 +128,19 @@ export default function Carousel({
             >
               <div className="relative h-72 md:h-[420px] rounded-2xl overflow-hidden shadow-smooth">
                 {!errored[s.id] ? (
-                  <BaseImage
-                        src={s.imgSrc}
-                        alt={s.imgAlt}
-                        className="object-cover w-full h-full"
-                        style={{ objectFit: "cover" }}
-                        onError={() => setErrored((e) => ({ ...e, [s.id]: true }))}
-                        loading={isActive ? "eager" : "lazy"}
-                      />
+                  <div className="absolute inset-0">
+                    <BaseImage
+                      src={s.imgSrc}
+                      alt={s.imgAlt}
+                      fill
+                      objectFit="cover"
+                      className="object-cover"
+                      onError={() => setErrored((e) => ({ ...e, [s.id]: true }))}
+                      loading={isActive ? "eager" : "lazy"}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={isActive}
+                    />
+                  </div>
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-secondary-100 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-300">
                     <span className="text-sm">Image indisponible</span>
@@ -236,10 +241,11 @@ export default function Carousel({
                   <BaseImage
                     src={s.imgSrc}
                     alt={s.imgAlt}
+                    width={160}
+                    height={64}
                     className="object-cover w-full h-full"
                     style={{ objectFit: "cover" }}
                     onError={() => setErrored((e) => ({ ...e, [s.id]: true }))}
-                    // loading={isActive ? "eager" : "lazy"}
                   />
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-secondary-100 dark:bg-secondary-700 text-secondary-500 dark:text-secondary-400 text-[11px]">

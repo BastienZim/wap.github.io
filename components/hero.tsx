@@ -25,7 +25,11 @@ export default function Hero() {
           decoding="async"
           fetchPriority="high"
           draggable={false}
-          className="h-full w-full object-cover object-top"
+          fill
+          objectFit="cover"
+          className="object-cover object-top"
+          sizes="100vw"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30 pointer-events-none" />
       </div>

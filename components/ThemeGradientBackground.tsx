@@ -61,14 +61,14 @@ const GRADIENTS = {
   
   // Brand-primary gradient using fixed hex colors matching theme
   wap: {
-    light: 'linear-gradient(135deg, #f3fdff 0%, #f8d5ad 45%, #f3a54b 100%)',
-    dark: 'linear-gradient(135deg, #694a38 0%, #c88430 55%, #f3a54b 100%)'
+    dark: 'linear-gradient(135deg, #ffffff 0%, #ffe8cc 45%, #f3a54b 100%)',
+    light: 'linear-gradient(135deg, #3d2b1f 0%, #c88430 55%, #f3a54b 100%)'
   },
   
   // Coffee-blue gradient using fixed hex colors matching theme
   karate: {
     light: 'linear-gradient(135deg, #dbe8ee 0%, #8eb1c7 40%, #9e7052 100%)',
-    dark: 'linear-gradient(135deg, #452f24 0%, #694a38 50%, #7d9cb1 100%)'
+    dark: 'linear-gradient(135deg, #2a1d17 0%, #452f24 50%, #5a7387 100%)'
   }
 };
 

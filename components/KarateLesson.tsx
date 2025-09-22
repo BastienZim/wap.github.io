@@ -1,7 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Image from '@/components/ui/BaseImage';
 import lessonData from '@/data/karate-lesson.json';
+import { useGradientStyle } from '@/lib/GradientStyleContext';
+import ThemeGradientBackground from './ThemeGradientBackground';
 
 interface LessonStep {
   id: number;
@@ -38,6 +41,7 @@ const lessonSteps = data.steps;
 export default function KarateLesson() {
   const [activeStep, setActiveStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { gradientStyle } = useGradientStyle();
 
   // Auto-progression when playing
   useEffect(() => {
@@ -56,16 +60,25 @@ export default function KarateLesson() {
   }, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary-50 to-brand-50">
+    <div className="min-h-screen">
+      {/* Add the theme-aware background */}
+      <ThemeGradientBackground style={gradientStyle} />
+      
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-secondary-800/90 to-primary-800/90"></div>
         <div className="absolute inset-0 opacity-20">
-          <Image 
-            src="/images/dojo-background.jpg" 
-            alt="Dojo background"
-            className="w-full h-full object-cover"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src="/images/directly_useful/dojo-charlety.jpg"
+              alt="Dojo background"
+              fill
+              objectFit="cover"
+              className="object-cover"
+              sizes="100vw"
+              priority={false}
+            />
+          </div>
         </div>
         
         <div className="relative max-w-6xl mx-auto px-6 text-center text-white">
@@ -103,13 +116,13 @@ export default function KarateLesson() {
           {/* Progress Bar */}
           <div className="mb-12">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-secondary-800">{data.progressTitle}</h2>
-              <span className="text-sm text-secondary-600">
+              <h2 className="text-2xl font-bold text-secondary-800 dark:text-secondary-200">{data.progressTitle}</h2>
+              <span className="text-sm text-secondary-600 dark:text-secondary-400">
                 {data.stepLabel} {activeStep + 1} {data.onLabel} {lessonSteps.length}
               </span>
             </div>
             
-            <div className="relative h-2 bg-secondary-200 rounded-full overflow-hidden">
+            <div className="relative h-2 bg-secondary-200 dark:bg-secondary-700 rounded-full overflow-hidden">
               <div 
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-brand-500 to-primary-500 transition-all duration-1000 ease-out"
                 style={{ width: `${((activeStep + 1) / lessonSteps.length) * 100}%` }}
@@ -128,7 +141,7 @@ export default function KarateLesson() {
                   className={`cursor-pointer p-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] ${
                     activeStep === index
                       ? `bg-gradient-to-r ${step.color} text-white shadow-lg`
-                      : 'bg-white hover:bg-primary-50 text-secondary-800 shadow border border-primary-200'
+                      : 'bg-white dark:bg-secondary-800 hover:bg-primary-50 dark:hover:bg-secondary-700 text-secondary-800 dark:text-secondary-200 shadow border border-primary-200 dark:border-secondary-700'
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -141,13 +154,13 @@ export default function KarateLesson() {
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                           activeStep === index 
                             ? 'bg-white/20 text-white' 
-                            : 'bg-primary-100 text-primary-700'
+                            : 'bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300'
                         }`}>
                           {step.duration}
                         </span>
                       </div>
                       <p className={`text-sm ${
-                        activeStep === index ? 'text-white/90' : 'text-secondary-600'
+                        activeStep === index ? 'text-white/90' : 'text-secondary-600 dark:text-secondary-400'
                       }`}>
                         {step.description}
                       </p>
@@ -209,18 +222,18 @@ export default function KarateLesson() {
             {data.ctaSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <Link 
               href="/contact"
               className="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-brand-500/25"
             >
               {data.ctaPrimaryButton}
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/pratique"
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20"
             >
               {data.ctaSecondaryButton}
-            </a>
+            </Link>
           </div>
         </div>
       </section>

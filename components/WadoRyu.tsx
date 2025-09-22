@@ -14,7 +14,7 @@ function InfoCard({ image, alt, titleBold, titleRest, text }: Card) {
   return (
     <div className="p-6 rounded-lg bg-gradient-to-t from-[#F9E79B] to-[#FEB454] shadow text-center">
       <div className="relative mx-auto mb-4 h-32 w-32 rounded-full border-2 border-secondary-300 dark:border-secondary-600 overflow-hidden">
-        <Image src={image} alt={alt} className="object-cover" />
+        <Image src={image} alt={alt} width={128} height={128} className="object-cover" />
       </div>
       <h3 className="text-xl font-bold text-tertiary-800 mb-3">
         <strong>{titleBold}</strong> {titleRest}

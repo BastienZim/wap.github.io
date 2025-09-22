@@ -1,6 +1,5 @@
 "use client";
 import BaseImage from "@/components/ui/BaseImage";
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { GalleryImage } from "./galleryUtils";
 import Lightbox, { LightboxItem } from "@/components/ui/Lightbox";
