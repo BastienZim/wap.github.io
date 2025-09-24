@@ -53,7 +53,8 @@
         "Positions (dachi)",
         "Blocages (uke)",
         "Coups de poing (tsuki)",
-        "Coups de pied (geri)"
+        "Coups de pied (geri)",
+        "Renzoku waza (enchaînement de techniques)"
       ],
       "image": "/images/techniques.jpg",
       "color": "from-secondary-600 to-secondary-800",
@@ -61,6 +62,21 @@
     },
     {
       "id": 4,
+      "title": "Travail à deux",
+      "duration": "20 min",
+      "description": "Techniques de Jūjutsu Kenpō - La caractéristique distinctive du Renmei, issue directement du Shindō Yōshin-ryū.",
+      "details": [
+        "Taisabaki (déplacements/angles corporels pour éviter les attaques plutôt que de les affronter de front)",
+        "Nage-waza (projections) : projections de hanche, balayages et fauchages combinés aux atemi",
+        "Kansetsu-waza (clés articulaires) : manipulations des poignets/coudes, souvent dissimulées dans le bunkai des kata",
+        "Atemi-waza (frappes sur points vitaux) pour préparer les contrôles ou les désarmements"
+      ],
+      "image": "/images/kumite.jpg",
+      "color": "from-brand-600 to-secondary-700",
+      "icon": "⚔️"
+    },
+    {
+      "id": 5,
       "title": "Kata",
       "duration": "30 min",
       "description": "Pratique des formes traditionnelles, véritables encyclopédies des techniques de combat.",
@@ -75,29 +91,13 @@
       "icon": "🥋"
     },
     {
-      "id": 5,
-      "title": "Combat & Applications",
-      "duration": "20 min",
-      "description": "Mise en pratique des techniques apprises dans des situations de combat contrôlé.",
-      "details": [
-        "Kumite de base",
-        "Applications des kata",
-        "Gestion de la distance",
-        "Contrôle et sécurité"
-      ],
-      "image": "/images/kumite.jpg",
-      "color": "from-brand-600 to-secondary-700",
-      "icon": "⚔️"
-    },
-    {
       "id": 6,
       "title": "Retour au Calme",
       "duration": "10 min",
       "description": "Récupération progressive et salut final pour clôturer le cours dans la tradition.",
       "details": [
-        "Étirements passifs",
-        "Respiration contrôlée",
-        "Bilan du cours",
+        "Étirements",
+        "Retour au calme",
         "Salut final"
       ],
       "image": "/images/salut-final.jpg",

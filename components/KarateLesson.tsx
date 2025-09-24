@@ -95,18 +95,7 @@ export default function KarateLesson() {
             {data.heroSubtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => setIsPlaying(!isPlaying)}
-              className={`px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
-                isPlaying 
-                  ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/25' 
-                  : 'bg-white text-secondary-800 shadow-lg hover:shadow-xl'
-              }`}
-            >
-              {isPlaying ? data.pauseButton : data.playButton}
-            </button>
-          </div>
+          
         </div>
       </section>
 
@@ -187,16 +176,44 @@ export default function KarateLesson() {
                   </p>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-lg">{data.programLabel}</h4>
-                  <ul className="space-y-2">
+                <div className="mb-6 relative">
+                  <div className="absolute -left-6 -top-4 w-20 h-20 bg-gradient-to-br from-white/10 to-white/5 rounded-full blur-2xl"></div>
+                  <div className="absolute -right-8 -bottom-2 w-12 h-12 bg-white/5 rounded-full blur-lg"></div>
+                  <h4 className="font-semibold mb-8 text-lg relative z-10 flex items-center gap-4">
+                    <span className="w-12 h-px bg-gradient-to-r from-white/80 via-white/40 to-transparent"></span>
+                    <span className="relative">
+                      {data.programLabel}
+                      <div className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-white/30 to-transparent"></div>
+                    </span>
+                  </h4>
+                  <div className="space-y-6 relative">
+                    <div className="absolute -left-4 top-0 bottom-0 w-px bg-gradient-to-b from-white/30 via-white/8 to-white/20"></div>
+                    <div className="absolute -left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent blur-sm"></div>
                     {lessonSteps[activeStep].details.map((detail, index) => (
-                      <li key={index} className="flex items-center gap-3 text-white/90">
-                        <span className="w-2 h-2 bg-white/60 rounded-full flex-shrink-0"></span>
-                        {detail}
-                      </li>
+                      <div key={index} className="group relative pl-10 py-4 rounded-r-xl transition-all duration-700 hover:bg-gradient-to-r hover:from-white/8 hover:to-white/3 hover:pl-12 hover:shadow-2xl hover:shadow-white/10">
+                        <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-white/40 to-white/20 group-hover:scale-150 group-hover:from-white/70 group-hover:to-white/40 transition-all duration-500 shadow-lg shadow-white/20"></div>
+                        <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 blur-sm"></div>
+                        <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-60 group-hover:scale-110 transition-all duration-900"></div>
+                        <div className="relative">
+                          <div className="flex items-start gap-5">
+                            <div className="flex-shrink-0 mt-1.5">
+                              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-white/15 to-white/5 border border-white/20 group-hover:border-white/50 group-hover:from-white/25 group-hover:to-white/10 transition-all duration-500 shadow-inner flex items-center justify-center">
+                                <div className="w-2 h-2 rounded-full bg-white/60 group-hover:bg-white/90 group-hover:scale-125 transition-all duration-300"></div>
+                              </div>
+                            </div>
+                            <div className="flex-1 relative">
+                              <p className="text-white/88 leading-relaxed group-hover:text-white/98 transition-colors duration-400 font-light tracking-wide group-hover:tracking-wider">
+                                {detail}
+                              </p>
+                              <div className="absolute -left-2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600"></div>
+                            </div>
+                          </div>
+                          <div className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-x-0 group-hover:scale-x-100"></div>
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-500 delay-200"></div>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 {/* Placeholder for image */}

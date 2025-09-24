@@ -12,6 +12,7 @@ const links = [
     { href: "/pratique", label: "Pratique" },
     { href: "/apropos", label: "À propos" },
     { href: "/galerie", label: "Galerie" },
+    { href: "/new_images_section", label: "Alt Galerie" },
     { href: "/ressources", label: "Ressources" },
     { href: "/contact", label: "Contact" },
     { href: "/wado-karate-info", label: "Wikipedia"},
